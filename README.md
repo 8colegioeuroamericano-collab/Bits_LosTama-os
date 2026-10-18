@@ -67,8 +67,16 @@ Para que los alumnos asimilaran de forma intuitiva y exacta las magnitudes de in
 
 Como parte de una metodología pedagógica innovadora:
 1. Los alumnos (**Adilene**, **Aylani** y **Ronaldo**) explicaron con sus propias palabras a **Gemini** (Inteligencia Artificial) lo que aprendieron en clase.
-2. Gemini analizó su nivel de retención y generó interfaces web educativas personalizadas para cada uno.
+2. Gemini analizó su nivel de asimilación y generó interfaces web educativas personalizadas para cada uno.
 3. Este repositorio conserva el registro del **"Antes y Después"**, permitiendo a estudiantes, padres de familia y a la comunidad observar su crecimiento formativo en el tiempo y de manera pública en la web.
+
+### 🌟 Páginas Web Creadas por los Alumnos:
+* 👩‍🎓 **Adilene. B:** [Fundamentos de Computación & Hardware](evaluaciones/evaluacion_adilene.html)  
+  *En línea:* [https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_adilene.html](https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_adilene.html)
+* 👩‍🎓 **Aylani. B:** [Hardware, Software y Componentes de la Computadora](evaluaciones/evaluacion_aylani.html)  
+  *En línea:* [https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_aylani.html](https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_aylani.html)
+* 👨‍🎓 **Ronaldo Pineda Andaya:** [MiClaseTech: Hardware, Software y Unidades de Medida](evaluaciones/evaluacion_ronaldo.html)  
+  *En línea:* [https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_ronaldo.html](https://8colegioeuroamericano-collab.github.io/Bits_LosTama-os/evaluaciones/evaluacion_ronaldo.html)
 
 ---
 

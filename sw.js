@@ -1,5 +1,5 @@
 // Service Worker - Manhattan School PWA
-const CACHE_NAME = 'manhattan-school-cache-v1';
+const CACHE_NAME = 'manhattan-school-cache-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -8,7 +8,10 @@ const ASSETS_TO_CACHE = [
   './js/app.js',
   './manifest.json',
   './img/MANHATTAN SCHOOL LOGO.jpg',
-  './img/icono.png'
+  './img/icono.png',
+  './evaluaciones/evaluacion_adilene.html',
+  './evaluaciones/evaluacion_aylani.html',
+  './evaluaciones/evaluacion_ronaldo.html'
 ];
 
 self.addEventListener('install', (event) => {

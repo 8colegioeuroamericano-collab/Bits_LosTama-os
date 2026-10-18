@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Computación & Hardware</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0b0f19',
+                            card: 'rgba(17, 24, 39, 0.7)',
+                            accent: '#6366f1',
+                            neonCyan: '#06b6d4',
+                            neonPurple: '#a855f7',
+                            neonGreen: '#10b981',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Personalizado para Efectos Glassmorphism & Animaciones -->
+    <style>
+        body {
+            background-color: #080c14;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .glass {
+            background: rgba(17, 25, 40, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(22, 30, 49, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
+        }
+
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.5); }
+        }
+
+        /* Corn Cob Byte Styling */
+        .corn-kernel {
+            transition: all 0.2s ease;
+        }
+        .corn-kernel:hover {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 6px #facc15);
+            z-index: 10;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid font-mono fa-microchip text-xl text-white"></i>
+                </div>
+                <span class="font-bold text-lg tracking-wide text-white">TechClass <span class="text-cyan-400 text-xs px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-800">Hoy</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#intro" class="hover:text-cyan-400 transition-colors">Software vs Hardware</a>
+                <a href="#unidades" class="hover:text-cyan-400 transition-colors">Bits & Bytes</a>
+                <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora</a>
+                <a href="#componentes" class="hover:text-cyan-400 transition-colors">Componentes</a>
+                <a href="#quiz" class="hover:text-cyan-400 transition-colors">Quiz</a>
+            </nav>
+
+            <a href="#quiz" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-all shadow-md shadow-indigo-600/30 flex items-center gap-2">
+                <i class="fa-solid fa-gamepad"></i> Poner a Prueba
+            </a>
+        </div>
+    </header>
+
+    <!-- BANNER DE AUTORÍA DESTACADO -->
+    <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 border-b border-indigo-500/30 py-3 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2 text-sm font-semibold text-indigo-200">
+                <span class="px-2.5 py-0.5 rounded-full bg-indigo-500/30 text-indigo-300 border border-indigo-400/40 text-xs font-mono uppercase">
+                    <i class="fa-solid fa-user-graduate mr-1"></i> Autoría
+                </span>
+                <span>Evaluación y Resumen de Clase realizado por: <strong class="text-cyan-300 font-bold text-base">Adilene. B</strong></span>
+            </div>
+            <div class="text-xs text-gray-400 font-mono">
+                <i class="fa-solid fa-calendar-day mr-1"></i> Clase de Fundamentos de Computación
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20 flex-grow">
+
+        <!-- HERO SECTION -->
+        <section class="text-center space-y-6 pt-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-indigo-500/30 text-indigo-300 text-xs font-semibold tracking-wide uppercase">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                Evaluación interactiva hecha por Adilene. B
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Fundamentos de <span class="text-gradient-cyan">Computación</span> & <span class="text-gradient-purple">Hardware</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light">
+                Un recorrido visual e interactivo sobre cómo funcionan las computadoras, desde la unidad más pequeña de datos hasta los componentes internos del gabinete.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 1: HARDWARE VS SOFTWARE -->
+        <section id="intro" class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-layer-group text-cyan-400"></i> Hardware vs Software
+                </h2>
+                <p class="text-gray-400 text-sm">Las dos columnas fundamentales sobre las que opera cualquier sistema informático.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hardware Card -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-hard-drive"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Hardware</h3>
+                            <span class="text-xs text-cyan-400 font-mono">Lo Tangible (Físico)</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Es todo lo que **puedes tocar físicamente**. Corresponde a los circuitos, chips, componentes electrónicos, cables, gabinetes y periféricos.
+                    </p>
+                    <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-800 text-xs text-gray-400 space-y-2">
+                        <span class="font-semibold text-gray-200 block">Ejemplos clave:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-800 px-2 py-1 rounded text-cyan-300">Procesador (CPU)</span>
+                            <span class="bg-gray-800 px-2 py-1 rounded text-cyan-300">Memoria RAM</span>
+                            <span class="bg-gray-800 px-2 py-1 rounded text-cyan-300">Disco SSD</span>
+                            <span class="bg-gray-800 px-2 py-1 rounded text-cyan-300">Teclado y Monitor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Card -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Software</h3>
+                            <span class="text-xs text-purple-400 font-mono">Lo Intangible (Lógico)</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Es el conjunto de **instrucciones, programas y datos** informáticos que le dicen al Hardware exactamente qué hacer y cómo operar.
+                    </p>
+                    <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-800 text-xs text-gray-400 space-y-2">
+                        <span class="font-semibold text-gray-200 block">Ejemplos clave:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-800 px-2 py-1 rounded text-purple-300">Sistema Operativo (Windows/Linux)</span>
+                            <span class="bg-gray-800 px-2 py-1 rounded text-purple-300">Navegador Web</span>
+                            <span class="bg-gray-800 px-2 py-1 rounded text-purple-300">Videojuegos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: UNIDADES DE MEDIDA DE DATOS Y ANALOGÍA DE LA MAZORCA -->
+        <section id="unidades" class="space-y-10">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-cubes text-indigo-400"></i> Unidades de Medida de Almacenamiento
+                </h2>
+                <p class="text-gray-400 text-sm">Desde el impulso eléctrico individual hasta los grandes volúmenes de datos.</p>
+            </div>
+
+            <!-- Analogía Didáctica: Mazorca y Granos -->
+            <div class="glass-card rounded-2xl p-6 md:p-8 border-l-4 border-l-yellow-400">
+                <div class="grid md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-xs font-semibold">
+                            <i class="fa-solid fa-lightbulb"></i> Analogía Didáctica de la Clase
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">La Mazorca de Maíz y los Bytes</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Para entender las medidas digitales de forma sencilla, imagina una <strong class="text-yellow-300">Mazorca de Maíz</strong>:
+                        </p>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <strong class="text-cyan-300">El Bit (1 Grano):</strong> Es un solo grano de maíz individual (un 0 o un 1). Por sí solo no forma casi nada.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <strong class="text-yellow-300">El Byte (Una Letra / Mazorca de 8 granos):</strong> Al juntar 8 bits (granos), formamos 1 Byte. Un Byte es el equivalente exacto al espacio necesario para almacenar **1 sola letra** (por ejemplo, la letra 'A').
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                <div>
+                                    <strong class="text-purple-300">KiloByte, MegaByte y Más:</strong> Un KiloByte (KB) son aprox. 1,000 Bytes (un paquete entero de mazorcas), un MegaByte (MB) son 1,000 KB, y así sucesivamente.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Representación Gráfica interactiva de la Mazorca (1 Byte = 8 Bits) -->
+                    <div class="md:col-span-5 bg-gray-950/80 rounded-2xl p-6 border border-gray-800 text-center space-y-4">
+                        <span class="text-xs text-gray-400 font-mono uppercase tracking-wider block">Demostración: 1 Byte = 8 Bits (1 Carácter)</span>
+                        
+                        <!-- Visualizador del Byte como Mazorca -->
+                        <div class="py-4 bg-yellow-950/20 rounded-xl border border-yellow-500/20 flex flex-col items-center justify-center gap-3">
+                            <div class="text-yellow-400 text-sm font-semibold flex items-center gap-2">
+                                <i class="fa-solid fa-wheat-awn text-xl"></i> Representación de la Letra "<span id="demo-char" class="text-cyan-400 text-xl font-bold">A</span>"
+                            </div>
+                            
+                            <!-- 8 Bits representando el Byte -->
+                            <div class="flex items-center gap-2" id="corn-cob-container">
+                                <!-- Generado con JS -->
+                            </div>
+                            <span class="text-xs text-gray-400 font-mono">Código ASCII/Binario: <span id="demo-binary" class="text-cyan-300 font-bold">01000001</span></span>
+                        </div>
+
+                        <div class="flex justify-center gap-2">
+                            <input type="text" id="char-input" maxlength="1" value="A" class="w-12 text-center bg-gray-900 border border-gray-700 rounded-lg py-1 px-2 text-white font-bold focus:border-cyan-400 focus:outline-none">
+                            <button onclick="updateCornCob()" class="px-3 py-1 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-300 text-xs font-semibold rounded-lg border border-yellow-500/40 transition-colors">
+                                Probar otra letra
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Escalas de Medida -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card rounded-xl p-5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">0 o 1</span>
+                        <i class="fa-solid fa-bolt text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Bit (b)</h4>
+                    <p class="text-xs text-gray-400">La unidad mínima. Representa un estado binario: Encendido (1) o Apagado (0).</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-300">8 Bits</span>
+                        <i class="fa-solid fa-font text-yellow-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Byte (B)</h4>
+                    <p class="text-xs text-gray-400">Equivale al espacio ocupado por un carácter/letra individual.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono px-2 py-0.5 rounded bg-green-500/20 text-green-300">~1,000 Bytes</span>
+                        <i class="fa-solid fa-file-lines text-green-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">KiloByte (KB)</h4>
+                    <p class="text-xs text-gray-400">1,000 Bytes (o 1,024 B). Es suficiente para almacenar un párrafo pequeño de texto plano.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">~1,000 KB</span>
+                        <i class="fa-solid fa-file-audio text-purple-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">MegaByte (MB)</h4>
+                    <p class="text-xs text-gray-400">1,000 KB. Típico para una canción MP3 (~3 a 5 MB) o una foto de alta resolución.</p>
+                </div>
+            </div>
+
+            <!-- Tip Aclaratorio: Megabits vs Megabytes -->
+            <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 text-lg">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="text-xs sm:text-sm text-gray-300 space-y-1">
+                    <span class="font-bold text-indigo-300 block">Dato Importante de Clase: Megabits (Mb) vs MegaBytes (MB)</span>
+                    <p>
+                        La 'b' minúscula significa <strong>bits</strong> (usado en velocidad de Internet, ej. 100 Mbps). La 'B' mayúscula significa <strong>Bytes</strong> (usado para peso de archivos). Recuerda: ¡1 MegaByte equivale a 8 MegaBits!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CALCULADORA INTERACTIVA DE ALMACENAMIENTO -->
+        <section id="calculadora" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-calculator text-cyan-400"></i> Calculadora & Conversor Interactivo
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">Escribe cualquier texto o palabra para calcular cuántos Bits, Bytes y unidades ocupa en memoria.</p>
+                    </div>
+
+                    <!-- Toggle Selector -->
+                    <div class="flex bg-gray-900 p-1 rounded-xl border border-gray-800 text-xs font-medium">
+                        <button id="btn-mode-text" onclick="setCalcMode('text')" class="px-4 py-1.5 rounded-lg bg-indigo-600 text-white transition-all">Modo Texto</button>
+                        <button id="btn-mode-num" onclick="setCalcMode('num')" class="px-4 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all">Modo Numérico (Bytes)</button>
+                    </div>
+                </div>
+
+                <!-- Input Field -->
+                <div class="space-y-2">
+                    <label id="calc-input-label" class="text-xs font-semibold text-gray-300 uppercase tracking-wider block">Ingresa un texto o frase:</label>
+                    <input type="text" id="calc-input" value="Hola Mundo hardware!" placeholder="Escribe aquí..." oninput="calculateStorage()" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 focus:outline-none font-mono text-sm">
+                </div>
+
+                <!-- Live Results Display -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
+                    <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                        <span class="text-xs text-gray-400 block font-mono">Bits (b)</span>
+                        <span id="res-bits" class="text-xl font-extrabold text-cyan-400 font-mono">0</span>
+                    </div>
+                    <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                        <span class="text-xs text-gray-400 block font-mono">Bytes (B)</span>
+                        <span id="res-bytes" class="text-xl font-extrabold text-yellow-400 font-mono">0</span>
+                    </div>
+                    <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                        <span class="text-xs text-gray-400 block font-mono">KiloBytes (KB)</span>
+                        <span id="res-kb" class="text-xl font-extrabold text-green-400 font-mono">0</span>
+                    </div>
+                    <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center">
+                        <span class="text-xs text-gray-400 block font-mono">MegaBytes (MB)</span>
+                        <span id="res-mb" class="text-xl font-extrabold text-purple-400 font-mono">0</span>
+                    </div>
+                    <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800 text-center col-span-2 sm:col-span-1">
+                        <span class="text-xs text-gray-400 block font-mono">GigaBytes (GB)</span>
+                        <span id="res-gb" class="text-xl font-extrabold text-pink-400 font-mono">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: COMPONENTES DEL GABINETE (HARDWARE) -->
+        <section id="componentes" class="space-y-10">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-server text-cyan-400"></i> Componentes del Gabinete (PC)
+                </h2>
+                <p class="text-gray-400 text-sm">Explora el interior de la computadora y la función esencial de cada elemento.</p>
+            </div>
+
+            <!-- Interactivo Diagrama del Gabinete -->
+            <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-cyan-400"></i> Diagrama Interactivo del Gabinete
+                </h3>
+
+                <!-- Contenedor del Gabinete Visual -->
+                <div class="relative bg-gray-950 rounded-xl border border-gray-800 p-6 min-h-[360px] flex items-center justify-center">
+                    <!-- Representación de Gabinete -->
+                    <div class="w-full max-w-2xl border-2 border-gray-800 rounded-2xl p-4 bg-gray-900/50 relative grid grid-cols-12 gap-3 min-h-[300px]">
+                        
+                        <!-- Motherboard (Placa Base) Background area -->
+                        <div id="diag-motherboard" onclick="openComponentModal('motherboard')" class="col-span-12 md:col-span-8 border-2 border-indigo-500/40 rounded-xl p-3 bg-indigo-950/20 hover:border-indigo-400 transition-all cursor-pointer relative group">
+                            <span class="absolute top-2 left-2 text-[10px] font-mono bg-indigo-900/80 text-indigo-200 px-2 py-0.5 rounded">Tarjeta Madre (Motherboard)</span>
+                            
+                            <div class="grid grid-cols-2 gap-3 mt-6">
+                                <!-- CPU -->
+                                <div id="diag-cpu" onclick="event.stopPropagation(); openComponentModal('cpu')" class="border border-cyan-500/50 bg-cyan-950/40 rounded-lg p-3 text-center hover:bg-cyan-900/50 transition-all group-hover:scale-95">
+                                    <i class="fa-solid fa-microchip text-2xl text-cyan-400 mb-1"></i>
+                                    <div class="text-xs font-bold text-white">Procesador (CPU)</div>
+                                </div>
+
+                                <!-- RAM -->
+                                <div id="diag-ram" onclick="event.stopPropagation(); openComponentModal('ram')" class="border border-green-500/50 bg-green-950/40 rounded-lg p-3 text-center hover:bg-green-900/50 transition-all">
+                                    <i class="fa-solid fa-memory text-2xl text-green-400 mb-1"></i>
+                                    <div class="text-xs font-bold text-white">Memoria RAM</div>
+                                </div>
+
+                                <!-- GPU -->
+                                <div id="diag-gpu" onclick="event.stopPropagation(); openComponentModal('gpu')" class="col-span-2 border border-purple-500/50 bg-purple-950/40 rounded-lg p-3 text-center hover:bg-purple-900/50 transition-all">
+                                    <i class="fa-solid fa-vr-cardboard text-2xl text-purple-400 mb-1"></i>
+                                    <div class="text-xs font-bold text-white">Tarjeta Gráfica (GPU)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side components (PSU & Storage & Cooling) -->
+                        <div class="col-span-12 md:col-span-4 flex flex-col gap-3">
+                            <!-- Cooling -->
+                            <div id="diag-cooling" onclick="openComponentModal('cooling')" class="flex-1 border border-blue-500/50 bg-blue-950/40 rounded-xl p-3 text-center flex flex-col items-center justify-center cursor-pointer hover:bg-blue-900/40 transition-all">
+                                <i class="fa-solid fa-fan text-2xl text-blue-400 animate-spin-slow mb-1"></i>
+                                <div class="text-xs font-bold text-white">Sistema Enfriamiento</div>
+                            </div>
+
+                            <!-- Storage -->
+                            <div id="diag-storage" onclick="openComponentModal('storage')" class="flex-1 border border-yellow-500/50 bg-yellow-950/40 rounded-xl p-3 text-center flex flex-col items-center justify-center cursor-pointer hover:bg-yellow-900/40 transition-all">
+                                <i class="fa-solid fa-database text-2xl text-yellow-400 mb-1"></i>
+                                <div class="text-xs font-bold text-white">Almacenamiento (SSD/HDD)</div>
+                            </div>
+
+                            <!-- PSU -->
+                            <div id="diag-psu" onclick="openComponentModal('psu')" class="flex-1 border border-red-500/50 bg-red-950/40 rounded-xl p-3 text-center flex flex-col items-center justify-center cursor-pointer hover:bg-red-900/40 transition-all">
+                                <i class="fa-solid fa-plug text-2xl text-red-400 mb-1"></i>
+                                <div class="text-xs font-bold text-white">Fuente de Poder (PSU)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-2">Haz clic en cualquiera de los componentes en el diagrama para ver su descripción detallada.</p>
+            </div>
+
+            <!-- Grid de Tarjetas de Componentes -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Tarjeta Madre -->
+                <div onclick="openComponentModal('motherboard')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Tarjeta Madre (Motherboard)</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">Es la placa de circuito impreso principal que conecta e interconecta todos los componentes del sistema.</p>
+                    <span class="text-xs text-indigo-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Procesador CPU -->
+                <div onclick="openComponentModal('cpu')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Procesador (CPU)</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">El "cerebro" de la computadora. Ejecuta las instrucciones y procesa las operaciones matemáticas/lógicas.</p>
+                    <span class="text-xs text-cyan-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Memoria RAM -->
+                <div onclick="openComponentModal('ram')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-memory"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Memoria RAM</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">Memoria ultrarrápida y volátil. Almacena temporalmente los datos de las aplicaciones en ejecución.</p>
+                    <span class="text-xs text-green-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Almacenamiento SSD/HDD -->
+                <div onclick="openComponentModal('storage')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Almacenamiento (SSD / HDD)</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">Guarda de forma permanente el sistema operativo, tus archivos y programas aun al apagar la PC.</p>
+                    <span class="text-xs text-yellow-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Tarjeta Gráfica GPU -->
+                <div onclick="openComponentModal('gpu')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Tarjeta Gráfica (GPU)</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">Procesa imágenes, gráficos 3D y video de alta resolución liberando de esa carga a la CPU.</p>
+                    <span class="text-xs text-purple-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Fuente de Poder PSU -->
+                <div onclick="openComponentModal('psu')" class="glass-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Fuente de Poder (PSU)</h3>
+                    <p class="text-gray-400 text-xs line-clamp-2 mb-4">Transforma la corriente alterna del tomacorriente en energía continua limpia para los componentes.</p>
+                    <span class="text-xs text-red-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Ver Detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: QUIZ / TRIVIA INTERACTIVA -->
+        <section id="quiz" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+                <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white">Quiz Rápido de Evaluación</h2>
+                            <p class="text-xs text-gray-400">Evaluación interactiva formulada por <strong class="text-cyan-300">Adilene. B</strong></p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400 block">Puntuación</span>
+                        <span id="quiz-score" class="text-lg font-bold text-cyan-400 font-mono">0 / 4</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Body Container -->
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Dynamic Quiz Content Rendered via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CERTIFICADO DE FINALIZACIÓN -->
+        <section id="certificado-section" class="hidden space-y-6">
+            <div class="glass-card rounded-2xl p-8 border-2 border-yellow-500/40 relative overflow-hidden bg-gradient-to-br from-gray-950 via-slate-900 to-indigo-950 text-center space-y-6">
+                <div class="absolute -top-12 -right-12 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/20 border border-yellow-500/40 text-yellow-300 text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-award text-yellow-400 text-sm"></i> Certificado de Evaluación Aprobada
+                </div>
+
+                <div class="space-y-2 max-w-2xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Certificado Oficial de Computación</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">Por la presentación y desarrollo satisfactorio de la evaluación de Fundamentos de Computación, Hardware y Unidades de Medida.</p>
+                </div>
+
+                <!-- Tarjeta del certificado -->
+                <div class="p-6 bg-gray-900/90 rounded-2xl border border-yellow-500/30 max-w-xl mx-auto text-left space-y-4 shadow-2xl relative">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                        <span class="text-xs font-mono text-gray-400 uppercase">Documento de Evaluación</span>
+                        <span class="text-xs font-mono text-yellow-400 font-bold">Estado: APROBADO</span>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-xs text-gray-400 block uppercase tracking-wider font-semibold">Evaluación realizada por:</span>
+                        <div class="text-2xl font-black text-cyan-300 tracking-wide font-mono">Adilene. B</div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-xs text-gray-300 pt-2 border-t border-gray-800">
+                        <div>
+                            <span class="text-gray-500 block">Materia:</span>
+                            <span class="font-semibold text-gray-200">Fundamentos de Computación</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Puntaje Obtenido:</span>
+                            <span id="cert-score" class="font-bold text-green-400">4 / 4 (100%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-center gap-4">
+                    <button onclick="window.print()" class="px-6 py-2.5 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-yellow-950 font-bold text-sm transition-all shadow-lg shadow-yellow-500/20 flex items-center gap-2">
+                        <i class="fa-solid fa-print"></i> Imprimir / Guardar Certificado
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal para Detalle de Componentes -->
+    <div id="component-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass border border-gray-700 w-full max-w-lg rounded-2xl p-6 relative space-y-4 animate-fade-in">
+            <button onclick="closeComponentModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically Inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 glass mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
+            <p class="font-semibold text-indigo-300">Esta evaluación fue hecha por Adilene. B</p>
+            <p class="text-gray-500">Clase de Fundamentos de Computación e Hardware &copy; 2026. Resumen Interactivo Didáctico.</p>
+            <p class="text-gray-600 font-mono">Byte = 8 Bits | CPU = Cerebro | RAM = Volátil | SSD = Permanente</p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT Y TYPESCRIPT COMPATIBLE -->
+    <script>
+        // --- 1. DATO Y ANALOGÍA DE LA MAZORCA (BYTE = 8 BITS) ---
+        function updateCornCob() {
+            const charInput = document.getElementById('char-input');
+            let char = charInput.value || 'A';
+            document.getElementById('demo-char').textContent = char;
+
+            // Obtener binario ASCII del carácter
+            const binary = char.charCodeAt(0).toString(2).padStart(8, '0');
+            document.getElementById('demo-binary').textContent = binary;
+
+            const cobContainer = document.getElementById('corn-cob-container');
+            cobContainer.innerHTML = '';
+
+            // Renderizar los 8 "granos" de maíz (bits)
+            for (let i = 0; i < 8; i++) {
+                const bitVal = binary[i];
+                const kernel = document.createElement('div');
+                kernel.className = `corn-kernel w-7 h-9 rounded-full flex flex-col items-center justify-center font-bold text-xs cursor-pointer border shadow-sm transition-all ${
+                    bitVal === '1' 
+                    ? 'bg-yellow-400 border-yellow-300 text-yellow-950 shadow-yellow-500/50' 
+                    : 'bg-yellow-950/60 border-yellow-800/60 text-yellow-600'
+                }`;
+                kernel.title = `Bit #${i + 1}: Valor ${bitVal}`;
+                kernel.innerHTML = `<span class="text-[10px] font-mono">${bitVal}</span>`;
+                cobContainer.appendChild(kernel);
+            }
+        }
+
+        // --- 2. CALCULADORA & CONVERSOR DE MEDIDAS ---
+        let currentCalcMode = 'text'; // 'text' o 'num'
+
+        function setCalcMode(mode) {
+            currentCalcMode = mode;
+            const btnText = document.getElementById('btn-mode-text');
+            const btnNum = document.getElementById('btn-mode-num');
+            const label = document.getElementById('calc-input-label');
+            const input = document.getElementById('calc-input');
+
+            if (mode === 'text') {
+                btnText.className = "px-4 py-1.5 rounded-lg bg-indigo-600 text-white transition-all";
+                btnNum.className = "px-4 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+                label.textContent = "Ingresa un texto o frase:";
+                input.type = "text";
+                input.value = "Hola Mundo hardware!";
+            } else {
+                btnNum.className = "px-4 py-1.5 rounded-lg bg-indigo-600 text-white transition-all";
+                btnText.className = "px-4 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+                label.textContent = "Ingresa cantidad exacta en Bytes (B):";
+                input.type = "number";
+                input.value = "1048576";
+            }
+            calculateStorage();
+        }
+
+        function calculateStorage() {
+            const inputVal = document.getElementById('calc-input').value;
+            let bytes = 0;
+
+            if (currentCalcMode === 'text') {
+                // En UTF-8 básico, cada carácter común equivale aprox a 1 Byte
+                bytes = new Blob([inputVal]).size;
+            } else {
+                bytes = parseFloat(inputVal) || 0;
+            }
+
+            const bits = bytes * 8;
+            const kb = bytes / 1000;
+            const mb = kb / 1000;
+            const gb = mb / 1000;
+
+            // Formatear números
+            document.getElementById('res-bits').textContent = bits.toLocaleString();
+            document.getElementById('res-bytes').textContent = bytes.toLocaleString();
+            document.getElementById('res-kb').textContent = kb < 0.01 && kb > 0 ? kb.toFixed(4) : kb.toLocaleString(undefined, {maximumFractionDigits: 2});
+            document.getElementById('res-mb').textContent = mb < 0.01 && mb > 0 ? mb.toFixed(5) : mb.toLocaleString(undefined, {maximumFractionDigits: 3});
+            document.getElementById('res-gb').textContent = gb < 0.0001 && gb > 0 ? gb.toExponential(2) : gb.toLocaleString(undefined, {maximumFractionDigits: 4});
+        }
+
+        // --- 3. MODAL DE COMPONENTES DE HARDWARE ---
+        const componentData = {
+            motherboard: {
+                title: "Tarjeta Madre (Motherboard / Placa Base)",
+                icon: "fa-network-wired",
+                color: "indigo",
+                role: "La Columna Vertebral",
+                desc: "Es la tarjeta de circuito impreso principal del gabinete. Todos los componentes se conectan a ella (CPU, RAM, discos, tarjeta gráfica) para comunicarse entre sí a través de sus buses de datos.",
+                analogy: "Como la ciudad con sus carreteras principales que conectan todos los edificios."
+            },
+            cpu: {
+                title: "Procesador (CPU)",
+                icon: "fa-microchip",
+                color: "cyan",
+                role: "El Cerebro del Sistema",
+                desc: "La Unidad Central de Procesamiento (CPU) ejecuta todas las instrucciones de los programas y coordina las tareas. Su velocidad se mide en GigaHertz (GHz) y número de núcleos.",
+                analogy: "El director de orquesta que procesa cada orden y matemática del sistema."
+            },
+            ram: {
+                title: "Memoria RAM",
+                icon: "fa-memory",
+                color: "green",
+                role: "Memoria Volátil de Trabajo Rápido",
+                desc: "Random Access Memory. Almacena de forma ultra rápida los datos e instrucciones de las aplicaciones que estás usando EN ESTE MOMENTO. Al apagar la computadora, la RAM se borra completamente (volátil).",
+                analogy: "Como la mesa de trabajo física: entre más grande sea la mesa, más documentos puedes tener abiertos a la vez."
+            },
+            storage: {
+                title: "Almacenamiento (SSD / HDD)",
+                icon: "fa-database",
+                color: "yellow",
+                role: "Memoria Permanente",
+                desc: "Guarda todos tus archivos, fotos, juegos y el sistema operativo de forma indefinida. Los SSDs (Unidades de Estado Sólido) son infinitamente más rápidos que los antiguos HDD mecánicos.",
+                analogy: "El archivador permanente de la oficina donde guardas carpetas bajo llave."
+            },
+            gpu: {
+                title: "Tarjeta Gráfica (GPU)",
+                icon: "fa-vr-cardboard",
+                color: "purple",
+                role: "Procesador Visual y 3D",
+                desc: "Especializada en renderizar gráficos, video e inteligencia artificial. Posee miles de núcleos diseñados específicamente para cálculos matemáticos en paralelo.",
+                analogy: "El artista visual experto encargado únicamente del lienzo de la pantalla."
+            },
+            psu: {
+                title: "Fuente de Poder (PSU)",
+                icon: "fa-plug",
+                color: "red",
+                role: "Suministro Eléctrico",
+                desc: "Convierte la corriente alterna (AC) del enchufe de tu casa a corriente continua (DC) a voltajes precisos (12V, 5V, 3.3V) necesarios para cada componente.",
+                analogy: "El corazón que bombea sangre (energía) con la presión precisa a cada órgano."
+            },
+            cooling: {
+                title: "Sistema de Enfriamiento (Cooling)",
+                icon: "fa-fan",
+                color: "blue",
+                role: "Disipación Térmica",
+                desc: "Mantiene la CPU y GPU en temperaturas seguras utilizando disipadores de aluminio/cobre, ventiladores o sistemas de refrigeración líquida.",
+                analogy: "El sistema de aire acondicionado que evita el sobrecalentamiento."
+            }
+        };
+
+        function openComponentModal(key) {
+            const comp = componentData[key];
+            if (!comp) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-${comp.color}-500/20 text-${comp.color}-400 flex items-center justify-center text-2xl">
+                        <i class="fa-solid ${comp.icon}"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">${comp.title}</h3>
+                        <span class="text-xs font-mono text-${comp.color}-400">${comp.role}</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-sm text-gray-300">
+                    <p class="leading-relaxed">${comp.desc}</p>
+                    
+                    <div class="bg-gray-900/80 p-3 rounded-xl border border-gray-800 text-xs">
+                        <strong class="text-yellow-400 block mb-1"><i class="fa-solid fa-lightbulb"></i> Analogía práctica:</strong>
+                        <span>${comp.analogy}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('component-modal').classList.remove('hidden');
+        }
+
+        function closeComponentModal() {
+            document.getElementById('component-modal').classList.add('hidden');
+        }
+
+        // --- 4. QUIZ INTERACTIVO DE EVALUACIÓN ---
+        const quizQuestions = [
+            {
+                question: "¿Cuál es la unidad de información más pequeña en computación?",
+                options: ["Byte", "KiloByte", "Bit", "MegaBit"],
+                correct: 2,
+                explanation: "¡Correcto! El Bit es la unidad básica y elemental (0 o 1)."
+            },
+            {
+                question: "En la analogía vista hoy en clase, ¿a qué equivale aproximadamente 1 Byte?",
+                options: ["Una mazorca completa", "Un grano de maíz (1 bit)", "El espacio que ocupa 1 sola letra (8 bits)", "Una canción de 3 minutos"],
+                correct: 2,
+                explanation: "¡Excelente! 1 Byte se compone de 8 bits y representa el espacio de 1 carácter o letra."
+            },
+            {
+                question: "¿Cuál de estos componentes se considera el 'Cerebro' de la computadora?",
+                options: ["Memoria RAM", "Procesador (CPU)", "Fuente de Poder (PSU)", "Disco Duro (SSD)"],
+                correct: 1,
+                explanation: "¡Así es! La CPU (Unidad Central de Procesamiento) ejecuta los cálculos y procesa las órdenes."
+            },
+            {
+                question: "¿Qué sucede con los datos guardados en la Memoria RAM cuando apagas la PC?",
+                options: ["Se guardan para siempre", "Se borran por ser memoria volátil", "Se transfieren a la GPU", "Se convierten en Megabits"],
+                correct: 1,
+                explanation: "¡Exacto! La RAM es volátil; solo guarda datos mientras el equipo está encendido."
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userScore = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const q = quizQuestions[currentQuestionIdx];
+
+            if (currentQuestionIdx >= quizQuestions.length) {
+                // Quiz finalizado - Mostrar resultado y activar certificado
+                const certSection = document.getElementById('certificado-section');
+                if (certSection) {
+                    certSection.classList.remove('hidden');
+                    document.getElementById('cert-score').textContent = `${userScore} / ${quizQuestions.length} (${Math.round((userScore / quizQuestions.length) * 100)}%)`;
+                }
+
+                container.innerHTML = `
+                    <div class="text-center py-8 space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">¡Quiz Completado!</h3>
+                        <p class="text-gray-300">Puntuación registrada para <strong class="text-cyan-300">Adilene. B</strong>: <span class="text-cyan-400 font-bold">${userScore} de ${quizQuestions.length}</span></p>
+                        <p class="text-xs text-yellow-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i> Se ha generado un certificado digital más abajo.</p>
+                        <button onclick="resetQuiz()" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30">
+                            Intentar de Nuevo
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-xs text-gray-400">
+                        <span>Pregunta ${currentQuestionIdx + 1} de ${quizQuestions.length}</span>
+                        <div class="w-32 bg-gray-800 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-indigo-500 h-full" style="width: ${((currentQuestionIdx + 1) / quizQuestions.length) * 100}%"></div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-white">${q.question}</h3>
+
+                    <div class="grid gap-3 pt-2">
+                        ${q.options.map((opt, idx) => `
+                            <button onclick="checkAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3.5 rounded-xl bg-gray-900/80 hover:bg-indigo-950/50 border border-gray-800 hover:border-indigo-500/50 text-gray-300 text-sm transition-all flex items-center justify-between">
+                                <span>${opt}</span>
+                                <i class="fa-regular fa-circle text-gray-600"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden rounded-xl p-3 text-xs font-medium border"></div>
+                </div>
+            `;
+        }
+
+        function checkAnswer(selectedIdx) {
+            const q = quizQuestions[currentQuestionIdx];
+            const feedback = document.getElementById('quiz-feedback');
+            const btns = document.querySelectorAll('.quiz-opt-btn');
+
+            // Deshabilitar todos los botones
+            btns.forEach((btn, idx) => {
+                btn.onclick = null;
+                if (idx === q.correct) {
+                    btn.classList.add('bg-green-950/80', 'border-green-500', 'text-green-200');
+                } else if (idx === selectedIdx) {
+                    btn.classList.add('bg-red-950/80', 'border-red-500', 'text-red-200');
+                }
+            });
+
+            feedback.classList.remove('hidden');
+            if (selectedIdx === q.correct) {
+                userScore++;
+                document.getElementById('quiz-score').textContent = `${userScore} / ${quizQuestions.length}`;
+                feedback.className = "rounded-xl p-3 text-xs font-medium border bg-green-950/60 border-green-500/40 text-green-300";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${q.explanation}`;
+            } else {
+                feedback.className = "rounded-xl p-3 text-xs font-medium border bg-red-950/60 border-red-500/40 text-red-300";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Incorrecto. ${q.explanation}`;
+            }
+
+            // Siguiente pregunta después de 2 segundos
+            setTimeout(() => {
+                currentQuestionIdx++;
+                renderQuiz();
+            }, 2500);
+        }
+
+        function resetQuiz() {
+            currentQuestionIdx = 0;
+            userScore = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        // --- INICIALIZACIÓN ---
+        window.onload = function() {
+            updateCornCob();
+            calculateStorage();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>

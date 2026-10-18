@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     switchTab(initialHash);
   }
 
-  // 2. Interactive Student Evaluation Simulators
+  // 2. Interactive Student Evaluation Simulators & Modal Preview
   const previewButtons = document.querySelectorAll('.btn-preview-student');
   previewButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -60,74 +60,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let contentHtml = '';
     if (studentName === 'Adilene') {
-      modalTitle.innerText = 'Proyecto Web de Adilene • Componentes y Periféricos';
+      modalTitle.innerText = 'Proyecto de Adilene. B — Fundamentos de Computación & Hardware';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #1e3a8a; border-radius:12px; padding:1.5rem; color:#e2e8f0;">
-          <h4 style="color:#fbbf24; font-size:1.15rem; margin-bottom:0.75rem;">🌟 Lo que Adilene le explicó a Gemini:</h4>
-          <p style="font-style:italic; margin-bottom:1rem; color:#94a3b8;">
-            "Aprendí que la computadora tiene partes que podemos tocar como el teclado y el ratón para meter datos (periféricos de entrada), y la pantalla e impresora para ver los resultados (salida). El CPU es el cerebro que piensa todo."
-          </p>
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem;">
-            <p style="font-weight:bold; color:#38bdf8; margin-bottom:0.5rem;">🤖 Código Web Estructurado por Gemini para Adilene:</p>
-            <pre style="background:#020617; padding:0.75rem; border-radius:6px; font-size:0.8rem; overflow-x:auto; color:#a7f3d0;">
-&lt;section class="tarjeta-adilene"&gt;
-  &lt;h2&gt;Mis Periféricos Favoritos&lt;/h2&gt;
-  &lt;ul&gt;
-    &lt;li&gt;⌨️ Teclado: Escribo las tareas&lt;/li&gt;
-    &lt;li&gt;🖱️ Mouse: Apunto y selecciono&lt;/li&gt;
-    &lt;li&gt;🖥️ Monitor: Veo mis avances&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/section&gt;</pre>
+        <div style="background:#0a192f; border:1px solid #38bdf8; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+            <div>
+              <h4 style="color:#38bdf8; font-size:1.15rem; font-weight:700;">🌟 Autoría: Adilene. B</h4>
+              <p style="font-size:0.85rem; color:#94a3b8;">Clase de Fundamentos de Computación • 18 de Octubre de 2026</p>
+            </div>
+            <a href="evaluaciones/evaluacion_adilene.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem;">
+              <span>↗️</span> Abrir Web en Pantalla Completa
+            </a>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#10b981; font-weight:700;">✅ Estado: Evaluada con éxito (18/10/2026)</span>
-            <span style="font-size:0.85rem; color:#94a3b8;">Sede: Zirándaro</span>
+
+          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #38bdf8;">
+            <p style="font-weight:bold; color:#38bdf8; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Adilene a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
+              "La computadora tiene dos partes fundamentales: el Hardware que podemos tocar físicamente y el Software que son los programas. Además aprendí los bits, bytes y las partes del gabinete."
+            </p>
+          </div>
+
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
+            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+              <span>🖥️ Vista Previa Interactiva de su Página</span>
+              <span style="color:#34d399;">● En Vivo</span>
+            </div>
+            <iframe src="evaluaciones/evaluacion_adilene.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Adilene. B"></iframe>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_adilene.html</span>
+            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
     } else if (studentName === 'Aylani') {
-      modalTitle.innerText = 'Proyecto Web de Aylani • Software vs Hardware';
+      modalTitle.innerText = 'Proyecto de Aylani. B — Hardware, Software y Componentes';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #065f46; border-radius:12px; padding:1.5rem; color:#e2e8f0;">
-          <h4 style="color:#34d399; font-size:1.15rem; margin-bottom:0.75rem;">🌟 Lo que Aylani le explicó a Gemini:</h4>
-          <p style="font-style:italic; margin-bottom:1rem; color:#94a3b8;">
-            "El hardware es todo lo duro que se puede golpear o tocar en una máquina, y el software es el alma, como Windows, los navegadores y los juegos que corren dentro."
-          </p>
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem;">
-            <p style="font-weight:bold; color:#38bdf8; margin-bottom:0.5rem;">🤖 Código Web Estructurado por Gemini para Aylani:</p>
-            <pre style="background:#020617; padding:0.75rem; border-radius:6px; font-size:0.8rem; overflow-x:auto; color:#a7f3d0;">
-&lt;div class="software-hardware-duo"&gt;
-  &lt;div class="caja-hw"&gt;Hardware: Gabinete, Pantalla, Bocinas&lt;/div&gt;
-  &lt;div class="caja-sw"&gt;Software: Windows, Google Chrome, Paint&lt;/div&gt;
-&lt;/div&gt;</pre>
+        <div style="background:#0a192f; border:1px solid #10b981; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+            <div>
+              <h4 style="color:#34d399; font-size:1.15rem; font-weight:700;">🌟 Autoría: Aylani. B</h4>
+              <p style="font-size:0.85rem; color:#94a3b8;">Apuntes Interactivos de Computación • 18 de Octubre de 2026</p>
+            </div>
+            <a href="evaluaciones/evaluacion_aylani.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem; background:linear-gradient(135deg, #10b981, #059669);">
+              <span>↗️</span> Abrir Web en Pantalla Completa
+            </a>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#10b981; font-weight:700;">✅ Estado: Evaluada con éxito (18/10/2026)</span>
-            <span style="font-size:0.85rem; color:#94a3b8;">Sede: Zirándaro</span>
+
+          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #10b981;">
+            <p style="font-weight:bold; color:#34d399; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Aylani a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
+              "El hardware es lo tangible, lo que podemos conectar y armar como teclado y procesador. El software son los programas, el sistema operativo y las aplicaciones que dan vida a la máquina."
+            </p>
+          </div>
+
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
+            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+              <span>🖥️ Vista Previa Interactiva de su Página</span>
+              <span style="color:#34d399;">● En Vivo</span>
+            </div>
+            <iframe src="evaluaciones/evaluacion_aylani.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Aylani. B"></iframe>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_aylani.html</span>
+            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
     } else if (studentName === 'Ronaldo') {
-      modalTitle.innerText = 'Proyecto Web de Ronaldo • La Cosecha Digital';
+      modalTitle.innerText = 'Proyecto de Ronaldo Pineda Andaya — MiClaseTech & Unidades de Medida';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #0e7490; border-radius:12px; padding:1.5rem; color:#e2e8f0;">
-          <h4 style="color:#38bdf8; font-size:1.15rem; margin-bottom:0.75rem;">🌟 Lo que Ronaldo le explicó a Gemini:</h4>
-          <p style="font-style:italic; margin-bottom:1rem; color:#94a3b8;">
-            "1 Bit es como un solo granito de maíz. Con 8 granitos hacemos 1 mazorca completa que es 1 Byte. Con 1,000 mazorcas llenamos 1 costal que es 1 Kilobyte. Con 1,000 costales cargamos la camioneta que es 1 Megabyte, y con 1,000 camionetas llenamos la bodega que es 1 Gigabyte."
-          </p>
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem;">
-            <p style="font-weight:bold; color:#38bdf8; margin-bottom:0.5rem;">🤖 Código Web Estructurado por Gemini para Ronaldo:</p>
-            <pre style="background:#020617; padding:0.75rem; border-radius:6px; font-size:0.8rem; overflow-x:auto; color:#a7f3d0;">
-&lt;div class="cosecha-ronaldo"&gt;
-  &lt;span&gt;🌽 1 Byte = 8 Bits&lt;/span&gt;
-  &lt;span&gt;🌾 1 KB = 1,000 Bytes&lt;/span&gt;
-  &lt;span&gt;🛻 1 MB = 1,000 KB&lt;/span&gt;
-  &lt;span&gt;🏢 1 GB = 1,000 MB&lt;/span&gt;
-&lt;/div&gt;</pre>
+        <div style="background:#0a192f; border:1px solid #06b6d4; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+            <div>
+              <h4 style="color:#38bdf8; font-size:1.15rem; font-weight:700;">🌟 Autoría: Ronaldo Pineda Andaya</h4>
+              <p style="font-size:0.85rem; color:#94a3b8;">Evaluación de Clase MiClaseTech • 18 de Octubre de 2026</p>
+            </div>
+            <a href="evaluaciones/evaluacion_ronaldo.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem; background:linear-gradient(135deg, #0ea5e9, #0284c7);">
+              <span>↗️</span> Abrir Web en Pantalla Completa
+            </a>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#10b981; font-weight:700;">✅ Estado: Evaluado con éxito (18/10/2026)</span>
-            <span style="font-size:0.85rem; color:#94a3b8;">Sede: Zirándaro</span>
+
+          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #06b6d4;">
+            <p style="font-weight:bold; color:#38bdf8; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Ronaldo a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
+              "Aprendimos hardware interno y externo, periféricos, software y las unidades de medida: 1 Bit, Byte (8 bits), KB (1,000 bytes), MB (1,000 KB), GB (1,000 MB) y cómo se transportan los datos."
+            </p>
+          </div>
+
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
+            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+              <span>🖥️ Vista Previa Interactiva de su Página</span>
+              <span style="color:#34d399;">● En Vivo</span>
+            </div>
+            <iframe src="evaluaciones/evaluacion_ronaldo.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Ronaldo Pineda Andaya"></iframe>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_ronaldo.html</span>
+            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
@@ -143,18 +176,43 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeModalBtn && modalEl) {
     closeModalBtn.addEventListener('click', () => {
       modalEl.style.display = 'none';
+      const iframe = modalEl.querySelector('iframe');
+      if (iframe) iframe.src = 'about:blank';
     });
     modalEl.addEventListener('click', (e) => {
-      if (e.target === modalEl) modalEl.style.display = 'none';
+      if (e.target === modalEl) {
+        modalEl.style.display = 'none';
+        const iframe = modalEl.querySelector('iframe');
+        if (iframe) iframe.src = 'about:blank';
+      }
     });
   }
 
-  // 3. PWA Installation Handling
+  // 3. Live Showcase Tab Switcher
+  const showcaseTabs = document.querySelectorAll('.showcase-tab-btn');
+  const showcaseIframe = document.getElementById('showcase-iframe');
+  const showcaseTitle = document.getElementById('showcase-student-title');
+  const showcaseLink = document.getElementById('showcase-external-link');
+
+  showcaseTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      showcaseTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const fileUrl = tab.getAttribute('data-url');
+      const studentName = tab.getAttribute('data-name');
+
+      if (showcaseIframe) showcaseIframe.src = fileUrl;
+      if (showcaseTitle) showcaseTitle.innerText = `Página Web de ${studentName}`;
+      if (showcaseLink) showcaseLink.href = fileUrl;
+    });
+  });
+
+  // 4. PWA Installation Handling
   let deferredPrompt;
   const pwaInstallBtn = document.getElementById('btn-pwa-install');
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent default mini-infobar
     e.preventDefault();
     deferredPrompt = e;
     if (pwaInstallBtn) {
@@ -181,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pwaInstallBtn) pwaInstallBtn.style.display = 'none';
   });
 
-  // 4. Service Worker Registration
+  // 5. Service Worker Registration
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
       .then((reg) => {

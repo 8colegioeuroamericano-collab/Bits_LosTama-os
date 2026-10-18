@@ -665,3 +665,41 @@ footer.app-footer {
     height: 480px;
   }
 }
+
+/* Student Showcase Switcher */
+.showcase-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.showcase-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-light);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.showcase-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.showcase-tab-btn.active {
+  background: var(--accent-gold);
+  color: #070d18;
+  border-color: var(--accent-gold-light);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+}
+

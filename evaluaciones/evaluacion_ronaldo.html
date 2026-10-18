@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Clase: Software y Hardware - Ronaldo Pineda Andaya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.15), 0 8px 10px -6px rgba(14, 165, 233, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen">
+
+    <!-- Banner Destacado de Evaluación del Alumno -->
+    <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-sky-700 text-white text-center py-2.5 px-4 text-xs sm:text-sm font-semibold tracking-wide shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+            <span class="bg-white/20 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider"><i class="fa-solid fa-user-graduate mr-1"></i> Evaluación de Clase</span>
+            <span>Alumno: <strong class="underline decoration-sky-300 underline-offset-2 text-white">Ronaldo Pineda Andaya</strong></span>
+        </div>
+    </div>
+
+    <!-- Navegación Fija -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-sky-500/10 text-sky-500 rounded-xl">
+                        <i class="fa-solid font-bold fa-laptop-code text-xl"></i>
+                    </div>
+                    <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
+                        Mi<span class="text-sky-500">Clase</span>Tech
+                    </span>
+                </div>
+                
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#hardware-interno" class="hover:text-sky-500 transition">Hardware Interno</a>
+                    <a href="#hardware-externo" class="hover:text-sky-500 transition">Periféricos y Cables</a>
+                    <a href="#software" class="hover:text-sky-500 transition">Software</a>
+                    <a href="#almacenamiento" class="hover:text-sky-500 transition">Unidades de Medida</a>
+                    <a href="#quiz" class="px-4 py-2 rounded-xl bg-sky-500 text-white hover:bg-sky-600 transition shadow-md shadow-sky-500/20">Quiz Repaso</a>
+                    
+                    <button id="themeToggle" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition" title="Cambiar Tema">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="themeToggleMobile" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:text-sky-500 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <a href="#hardware-interno" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Hardware Interno</a>
+            <a href="#hardware-externo" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Periféricos y Cables</a>
+            <a href="#software" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Software</a>
+            <a href="#almacenamiento" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Unidades de Medida</a>
+            <a href="#quiz" class="block px-3 py-2 rounded-lg bg-sky-500 text-white text-center font-medium">Quiz Repaso</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-24">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-sky-400/20 to-indigo-500/20 blur-3xl rounded-full -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <!-- Etiqueta de Autoría y Evaluación -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-sky-100 text-sky-900 dark:bg-sky-950/80 dark:text-sky-300 mb-6 border border-sky-300 dark:border-sky-800 shadow-sm">
+                <i class="fa-solid fa-id-card text-sky-500"></i> Evaluación Presentada por: <span class="text-sky-600 dark:text-sky-400">Ronaldo Pineda Andaya</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6">
+                Mi Clase de Hoy: <br><span class="gradient-text">Software y Hardware</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+                Esta página web representa mi evidencia de evaluación donde explico el funcionamiento del Hardware de la computadora (como la tarjeta madre, fuente de poder, CPU, RAM y almacenamiento), el Software, la conexión de cables y las unidades de medida de información.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#hardware-interno" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-semibold shadow-lg shadow-sky-500/25 transition transform hover:-translate-y-0.5">
+                    Explorar Hardware
+                </a>
+                <a href="#almacenamiento" class="px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-semibold transition">
+                    Calculadora de Bits
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-20">
+
+        <!-- 1. HARDWARE INTERNO -->
+        <section id="hardware-interno" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                    <i class="fa-solid fa-microchip text-sky-500 mr-2"></i> Hardware Interno
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Componentes físicos principales dentro del gabinete de la computadora que permiten su funcionamiento técnico.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tarjeta Madre -->
+                <div class="glass-card p-6 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chess-board"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Tarjeta Madre (Motherboard)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Es la placa principal de la computadora. Sirve para **dar conexión eléctrica y de datos a todos los componentes** del sistema, permitiendo que se comuniquen entre sí.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-md inline-block">
+                        Función: Conectividad Total
+                    </div>
+                </div>
+
+                <!-- Fuente de Poder (EDITADA ESPECÍFICAMENTE) -->
+                <div class="glass-card p-6 rounded-2xl border-2 border-amber-500/40 hover:border-amber-500 transition-all duration-300 hover:shadow-xl group bg-amber-500/5">
+                    <div class="w-14 h-14 bg-amber-500/20 text-amber-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-plug-circle-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center justify-between">
+                        Fuente de Poder de la Computadora
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        La **Fuente de Poder (PSU)** de la computadora es el componente vital encargado de convertir la corriente eléctrica alterna (AC) del tomacorriente en corriente continua (DC) regulada. Su función esencial es **dar y distribuir la energía adecuada a todos los componentes internos**, como la tarjeta madre, la CPU, la tarjeta de video, los discos duros y los ventiladores para que el equipo pueda encender y funcionar correctamente.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 rounded-md inline-block">
+                        Función: Conversión y Suministro Eléctrico Vital
+                    </div>
+                </div>
+
+                <!-- CPU -->
+                <div class="glass-card p-6 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-sky-500/10 text-sky-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">CPU (Procesador)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Es el **cerebro de la computadora**. Procesa todas las instrucciones de los programas, realiza los cálculos aritméticos y coordina las órdenes del sistema operativo.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 rounded-md inline-block">
+                        Función: Cerebro Operativo
+                    </div>
+                </div>
+
+                <!-- Memoria RAM -->
+                <div class="glass-card p-6 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt font-bold"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Memoria RAM</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Es la memoria de acceso aleatorio ultrarrápida. Sirve para **recordar y almacenar datos rápidamente de forma temporal** mientras usas las aplicaciones activas.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-md inline-block">
+                        Función: Memoria Temporal Ultrarrápida
+                    </div>
+                </div>
+
+                <!-- Disco Duro / SSD -->
+                <div class="glass-card p-6 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Disco Duro / SSD</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Es la memoria de almacenamiento secundario donde se **guardan tus archivos de forma permanente**, fotos, videos, juegos y el sistema operativo.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 rounded-md inline-block">
+                        Función: Almacenamiento Permanente
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Red -->
+                <div class="glass-card p-6 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-indigo-500/10 text-indigo-500 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Tarjeta de Red</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Es el componente de comunicación que **nos conecta a Internet** y redes de computadoras, ya sea por cable ethernet o red inalámbrica Wi-Fi.
+                    </p>
+                    <div class="text-xs font-semibold px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded-md inline-block">
+                        Función: Conexión a Internet y Redes
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HARDWARE EXTERNO, PUERTOS Y GUÍA DE CABLES -->
+        <section id="hardware-externo" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                    <i class="fa-solid fa-desktop text-sky-500 mr-2"></i> Periféricos, Puertos y Conexión
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Los componentes externos nos permiten interactuar con el sistema de computación y conectar dispositivos.
+                </p>
+            </div>
+
+            <!-- Periféricos & Puertos Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Periféricos Externos -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-keyboard text-sky-500"></i> Periféricos Externos
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center gap-3">
+                            <i class="fa-solid fa-display text-sky-500 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Pantalla / Monitor</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Muestra la interfaz visual.</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center gap-3">
+                            <i class="fa-solid fa-keyboard text-emerald-500 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Teclado</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Introduce texto y comandos.</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center gap-3">
+                            <i class="fa-solid fa-mouse text-purple-500 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Ratón / Mouse</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Controlador gráfico y puntero.</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-amber-500 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Bocinas</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Reproducen la salida de audio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Puertos de Conexión -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-plug text-sky-500"></i> Puertos Principales
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="px-2.5 py-1 rounded bg-blue-500 text-white font-mono text-xs font-bold">USB</span>
+                                <div>
+                                    <h4 class="font-bold text-sm">Puerto USB</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Puerto universal para teclado, mouse, memorias e impresoras.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="px-2.5 py-1 rounded bg-indigo-500 text-white font-mono text-xs font-bold">HDMI</span>
+                                <div>
+                                    <h4 class="font-bold text-sm">Puerto HDMI</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Transmite audio y video en alta definición digital.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="px-2.5 py-1 rounded bg-sky-600 text-white font-mono text-xs font-bold">VGA</span>
+                                <div>
+                                    <h4 class="font-bold text-sm">Puerto VGA</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Conector azul para transmitir video en formato analógico.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guía Interactiva: Conexión de Cables Paso a Paso -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-sky-500/30">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <span class="text-xs font-bold tracking-widest text-sky-500 uppercase">Aprende Ensamblaje Básico</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">
+                        ¿Cómo conectar los cables para que la computadora funcione?
+                    </h3>
+                </div>
+
+                <!-- Pasos Interactivos -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="cableSteps">
+                    <button onclick="setCableStep(1)" id="stepBtn-1" class="step-btn text-left p-4 rounded-xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 transition">
+                        <div class="text-xs font-bold text-sky-500">PASO 1</div>
+                        <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">1. Pantalla (Video)</div>
+                    </button>
+                    <button onclick="setCableStep(2)" id="stepBtn-2" class="step-btn text-left p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-transparent transition">
+                        <div class="text-xs font-bold text-slate-400">PASO 2</div>
+                        <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">2. Teclado y Mouse</div>
+                    </button>
+                    <button onclick="setCableStep(3)" id="stepBtn-3" class="step-btn text-left p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-transparent transition">
+                        <div class="text-xs font-bold text-slate-400">PASO 3</div>
+                        <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">3. Audio e Internet</div>
+                    </button>
+                    <button onclick="setCableStep(4)" id="stepBtn-4" class="step-btn text-left p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-transparent transition">
+                        <div class="text-xs font-bold text-slate-400">PASO 4</div>
+                        <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">4. Cable de Poder</div>
+                    </button>
+                </div>
+
+                <!-- Contenido Dinámico del Paso -->
+                <div class="mt-6 p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center gap-6">
+                    <div id="stepIcon" class="w-20 h-20 bg-sky-500/10 text-sky-500 rounded-2xl flex items-center justify-center text-3xl shrink-0">
+                        <i class="fa-solid fa-tv"></i>
+                    </div>
+                    <div>
+                        <h4 id="stepTitle" class="text-lg font-bold text-slate-900 dark:text-white">Paso 1: Conectar el Monitor de Video</h4>
+                        <p id="stepDesc" class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                            Conecta el cable **HDMI** o **VGA** desde el puerto de la pantalla hasta la salida de video del gabinete. ¡Asegúrate de fijar adecuadamente los tornillos si usas VGA!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SOFTWARE Y SISTEMAS OPERATIVOS -->
+        <section id="software" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                    <i class="fa-solid fa-compact-disc text-sky-500 mr-2"></i> Software y Sistemas Operativos
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    El software es la parte lógica o intangible que hace funcionar cada dispositivo tecnológico.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Windows -->
+                <div class="glass-card p-6 rounded-2xl hover:border-blue-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-windows"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Windows</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">
+                        Es el sistema operativo desarrollado por Microsoft que **hace funcionar la mayoría de las computadoras** personales del mundo.
+                    </p>
+                </div>
+
+                <!-- macOS -->
+                <div class="glass-card p-6 rounded-2xl hover:border-slate-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-slate-500/10 text-slate-700 dark:text-slate-200 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-apple"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">macOS</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">
+                        Es el sistema operativo exclusivo de **los dispositivos y computadoras de Apple**, caracterizado por su fluidez y seguridad.
+                    </p>
+                </div>
+
+                <!-- Linux / Android -->
+                <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Linux & Android</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">
+                        Linux es un sistema operativo abierto e independientemente programable, y es además **la base que utilizan los dispositivos Android**.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. UNIDADES DE MEDIDA DE ALMACENAMIENTO -->
+        <section id="almacenamiento" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                    <i class="fa-solid fa-calculator text-sky-500 mr-2"></i> Unidades de Medida de Almacenamiento
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Así como en la vida cotidiana medimos gramos o metros, en informática medimos los datos en bits, bytes y sus múltiplos.
+                </p>
+            </div>
+
+            <!-- Tabla de Equivalencias -->
+            <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-slate-200 dark:border-slate-800">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-100 dark:bg-slate-900 text-xs uppercase font-bold text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800">
+                            <tr>
+                                <th class="p-4">Unidad</th>
+                                <th class="p-4">Símbolo</th>
+                                <th class="p-4">Equivalencia Exacta</th>
+                                <th class="p-4">Ejemplo Práctico</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Bit</td>
+                                <td class="p-4 font-mono">b</td>
+                                <td class="p-4">Un 0 o un 1 (Unidad mínima)</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Estado de encendido o apagado.</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Byte</td>
+                                <td class="p-4 font-mono">B</td>
+                                <td class="p-4 font-semibold">8 Bits</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Equivale a 1 carácter o letra ("A").</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Kilobyte</td>
+                                <td class="p-4 font-mono">KB</td>
+                                <td class="p-4">1,024 Bytes</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Un archivo de texto simple.</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Megabyte</td>
+                                <td class="p-4 font-mono">MB</td>
+                                <td class="p-4">1,024 KB</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Una canción en MP3 o fotografía.</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Gigabyte</td>
+                                <td class="p-4 font-mono">GB</td>
+                                <td class="p-4">1,024 MB</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Una película en formato HD.</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 dark:hover:bg-slate-900/50">
+                                <td class="p-4 font-bold text-sky-500">Terabyte</td>
+                                <td class="p-4 font-mono">TB</td>
+                                <td class="p-4">1,024 GB</td>
+                                <td class="p-4 text-xs text-slate-500 dark:text-slate-400">Un disco duro de alta capacidad.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Calculadora / Convertidor Interactivo -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl custom-shadow border border-sky-500/20">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-arrows-rotate text-sky-500"></i> Conversor de Almacenamiento
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+                    <div>
+                        <label class="block text-xs font-semibold mb-2 text-slate-600 dark:text-slate-300">Cantidad:</label>
+                        <input type="number" id="calcValue" value="1" min="0" oninput="convertUnits()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-2 text-slate-600 dark:text-slate-300">Unidad inicial:</label>
+                        <select id="calcUnit" onchange="convertUnits()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 font-semibold">
+                            <option value="GB" selected>Gigabytes (GB)</option>
+                            <option value="MB">Megabytes (MB)</option>
+                            <option value="KB">Kilobytes (KB)</option>
+                            <option value="TB">Terabytes (TB)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <div class="p-3 bg-sky-500/10 rounded-xl border border-sky-500/20 text-sky-600 dark:text-sky-300 text-xs">
+                            <i class="fa-solid fa-circle-info mr-1"></i> Tip: 1 GB son aproximadamente **1,024 MB** de capacidad.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados Convertidos -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 text-center">
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl">
+                        <span class="block text-xs text-slate-500">Bytes</span>
+                        <span id="resBytes" class="font-mono font-bold text-sm sm:text-base text-slate-800 dark:text-slate-100">1,073,741,824</span>
+                    </div>
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl">
+                        <span class="block text-xs text-slate-500">Megabytes (MB)</span>
+                        <span id="resMB" class="font-mono font-bold text-sm sm:text-base text-slate-800 dark:text-slate-100">1,024</span>
+                    </div>
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl">
+                        <span class="block text-xs text-slate-500">Gigabytes (GB)</span>
+                        <span id="resGB" class="font-mono font-bold text-sm sm:text-base text-slate-800 dark:text-slate-100">1</span>
+                    </div>
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl">
+                        <span class="block text-xs text-slate-500">Terabytes (TB)</span>
+                        <span id="resTB" class="font-mono font-bold text-sm sm:text-base text-slate-800 dark:text-slate-100">0.00097</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. QUIZ / REPASO INTERACTIVO DE EVALUACIÓN -->
+        <section id="quiz" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                    <i class="fa-solid fa-graduation-cap text-sky-500 mr-2"></i> Cuestionario de Evaluación
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Demuestra los conocimientos aprendidos respondiendo este cuestionario de opción múltiple.
+                </p>
+            </div>
+
+            <div class="glass-card max-w-2xl mx-auto p-6 sm:p-8 rounded-3xl custom-shadow border border-sky-500/20">
+                <div id="quizContainer">
+                    <div class="flex justify-between items-center mb-6">
+                        <span id="quizProgress" class="text-xs font-bold px-3 py-1 bg-sky-500/10 text-sky-500 rounded-full">Pregunta 1 de 5</span>
+                        <span id="quizScore" class="text-xs font-bold text-slate-500">Puntos: 0</span>
+                    </div>
+
+                    <h3 id="quizQuestion" class="text-lg font-bold text-slate-900 dark:text-white mb-6">
+                        Cargando pregunta...
+                    </h3>
+
+                    <div id="quizOptions" class="space-y-3">
+                        <!-- Opciones dinámicas -->
+                    </div>
+
+                    <div id="quizFeedback" class="hidden mt-4 p-4 rounded-xl text-sm font-medium"></div>
+
+                    <div class="mt-6 text-right">
+                        <button id="nextBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition">
+                            Siguiente Pregunta <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resumen de Resultados final -->
+                <div id="quizResults" class="hidden text-center py-8">
+                    <div class="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">¡Evaluación Finalizada!</h3>
+                    <p id="finalScoreText" class="text-slate-600 dark:text-slate-300 mb-6">Completaste la prueba con éxito.</p>
+                    <button onclick="resetQuiz()" class="px-6 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition">
+                        Volver a Intentar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 text-center text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© Página Web Educativa de Evaluación | Alumno: <strong>Ronaldo Pineda Andaya</strong></p>
+        </div>
+    </footer>
+
+    <!-- Lógica en JavaScript -->
+    <script>
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeToggleMobileBtn = document.getElementById('themeToggleMobile');
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', toggleDarkMode);
+        themeToggleMobileBtn.addEventListener('click', toggleDarkMode);
+
+        // Menú Móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // GUÍA PASO A PASO DE CABLES
+        const cableStepsData = {
+            1: {
+                title: "Paso 1: Conectar el Monitor de Video",
+                desc: "Conecta el cable **HDMI** o **VGA** desde el puerto de la pantalla hasta la salida de video del gabinete. ¡Asegúrate de fijar adecuadamente los tornillos si usas VGA!",
+                icon: "fa-tv"
+            },
+            2: {
+                title: "Paso 2: Conectar Teclado y Ratón",
+                desc: "Ubica los puertos **USB** en la parte trasera o frontal de la computadora y conecta los cables de tu teclado y mouse.",
+                icon: "fa-keyboard"
+            },
+            3: {
+                title: "Paso 3: Conectar Sonido e Internet",
+                desc: "Conecta el cable de red ethernet en la **tarjeta de red** para acceder a Internet, y enchufa las bocinas en el puerto jack de audio verde.",
+                icon: "fa-network-wired"
+            },
+            4: {
+                title: "Paso 4: Conectar la Fuente de Poder",
+                desc: "Enchufa el cable de corriente eléctrica directamente a la **Fuente de Poder (PSU)** del gabinete y al tomacorriente para energizar la computadora.",
+                icon: "fa-plug"
+            }
+        };
+
+        function setCableStep(step) {
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`stepBtn-${i}`);
+                if (i === step) {
+                    btn.className = "step-btn text-left p-4 rounded-xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 transition";
+                } else {
+                    btn.className = "step-btn text-left p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-transparent transition";
+                }
+            }
+
+            const data = cableStepsData[step];
+            document.getElementById('stepTitle').innerText = data.title;
+            document.getElementById('stepDesc').innerText = data.desc;
+            document.getElementById('stepIcon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+        }
+
+        // CONVERTIDOR DE UNIDADES DE ALMACENAMIENTO
+        function convertUnits() {
+            const val = parseFloat(document.getElementById('calcValue').value) || 0;
+            const unit = document.getElementById('calcUnit').value;
+
+            let bytes = 0;
+
+            switch(unit) {
+                case 'KB': bytes = val * 1024; break;
+                case 'MB': bytes = val * 1024 * 1024; break;
+                case 'GB': bytes = val * 1024 * 1024 * 1024; break;
+                case 'TB': bytes = val * 1024 * 1024 * 1024 * 1024; break;
+            }
+
+            const resBytes = bytes;
+            const resMB = bytes / (1024 * 1024);
+            const resGB = bytes / (1024 * 1024 * 1024);
+            const resTB = bytes / (1024 * 1024 * 1024 * 1024);
+
+            document.getElementById('resBytes').innerText = resBytes.toLocaleString('es-ES');
+            document.getElementById('resMB').innerText = resMB < 0.01 && resMB > 0 ? resMB.toFixed(4) : resMB.toLocaleString('es-ES', {maximumFractionDigits: 2});
+            document.getElementById('resGB').innerText = resGB < 0.01 && resGB > 0 ? resGB.toFixed(4) : resGB.toLocaleString('es-ES', {maximumFractionDigits: 2});
+            document.getElementById('resTB').innerText = resTB < 0.0001 && resTB > 0 ? resTB.toFixed(6) : resTB.toLocaleString('es-ES', {maximumFractionDigits: 5});
+        }
+
+        // QUIZ INTERACTIVO
+        const quizData = [
+            {
+                question: "¿Cuál es la función exacta de la Fuente de Poder (PSU) en una computadora?",
+                options: [
+                    "Almacenar archivos de texto y fotos de manera permanente.",
+                    "Convertir la corriente alterna en continua y suministrar la energía adecuada a todos los componentes internos.",
+                    "Procesar únicamente los gráficos y el video del monitor.",
+                    "Conectar la computadora a la red Wi-Fi de manera inalámbrica."
+                ],
+                correct: 1
+            },
+            {
+                question: "¿Cuál es la función de la Tarjeta Madre (Motherboard)?",
+                options: [
+                    "Dar conexión eléctrica y de datos interconectando todos los componentes.",
+                    "Brindar energía de respaldo cuando hay apagones.",
+                    "Emitir el sonido del equipo a través de las bocinas.",
+                    "Servir únicamente como memoria de acceso aleatorio."
+                ],
+                correct: 0
+            },
+            {
+                question: "¿A cuántos Bits equivale un Byte?",
+                options: [
+                    "1024 Bits",
+                    "16 Bits",
+                    "8 Bits",
+                    "1 Bit"
+                ],
+                correct: 2
+            },
+            {
+                question: "¿Qué componente interno se conoce como el 'cerebro' de la computadora?",
+                options: [
+                    "Memoria RAM",
+                    "CPU (Procesador)",
+                    "Disco Duro",
+                    "Tarjeta de Red"
+                ],
+                correct: 1
+            },
+            {
+                question: "¿Qué sistema operativo de código abierto sirve como base para Android?",
+                options: [
+                    "Windows",
+                    "macOS",
+                    "Linux",
+                    "MS-DOS"
+                ],
+                correct: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+            document.getElementById('quizProgress').innerText = `Pregunta ${currentQuestion + 1} de ${quizData.length}`;
+            document.getElementById('quizQuestion').innerText = q.question;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            document.getElementById('quizFeedback').className = "hidden mt-4 p-4 rounded-xl text-sm font-medium";
+            document.getElementById('nextBtn').classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-sky-50 dark:hover:bg-slate-800/80 transition flex items-center gap-3";
+                btn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs font-bold">${String.fromCharCode(65 + idx)}</span>
+                    <span class="text-sm font-medium text-slate-800 dark:text-slate-200">${opt}</span>
+                `;
+                btn.onclick = () => selectOption(idx);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index) {
+            const q = quizData[currentQuestion];
+            const feedback = document.getElementById('quizFeedback');
+            const options = document.getElementById('quizOptions').children;
+
+            for (let btn of options) {
+                btn.disabled = true;
+            }
+
+            if (index === q.correct) {
+                score++;
+                document.getElementById('quizScore').innerText = `Puntos: ${score}`;
+                options[index].classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/30');
+                feedback.className = "mt-4 p-4 rounded-xl text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300";
+                feedback.innerText = "¡Correcto! Excelente respuesta.";
+            } else {
+                options[index].classList.add('border-rose-500', 'bg-rose-50', 'dark:bg-rose-950/30');
+                options[q.correct].classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/30');
+                feedback.className = "mt-4 p-4 rounded-xl text-sm font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300";
+                feedback.innerText = `Incorrecto. La respuesta correcta era la Opción ${String.fromCharCode(65 + q.correct)}.`;
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+            document.getElementById('finalScoreText').innerText = `Alumno Ronaldo Pineda Andaya, tu resultado final es: ${score} de ${quizData.length} respuestas correctas.`;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quizScore').innerText = `Puntos: 0`;
+            document.getElementById('quizResults').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Inicializar al cargar
+        window.onload = function() {
+            convertUnits();
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>
