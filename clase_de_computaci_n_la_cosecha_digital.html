@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Cosecha Digital - Clase de Computación del Rancho</title>
+  
+  <!-- PWA Manifest & Theme Color -->
+  <meta name="theme-color" content="#2d6a4f">
+  <link rel="manifest" href="data:application/json;choice,manifest={
+    &quot;name&quot;: &quot;La Cosecha Digital - Computación del Rancho&quot;,
+    &quot;short_name&quot;: &quot;CosechaDigital&quot;,
+    &quot;start_url&quot;: &quot;.&quot;,
+    &quot;display&quot;: &quot;standalone&quot;,
+    &quot;background_color&quot;: &quot;#fefae0&quot;,
+    &quot;theme_color&quot;: &quot;#2d6a4f&quot;,
+    &quot;icons&quot;: [{
+      &quot;src&quot;: &quot;https://placehold.co/192x192/2d6a4f/ffffff?text=🌽+PWA&quot;,
+      &quot;sizes&quot;: &quot;192x192&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    }]
+  }">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Inter for friendly child-oriented typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rancho: {
+              green: '#2d6a4f',
+              lightgreen: '#52b788',
+              yellow: '#dda15e',
+              brightyellow: '#ffb703',
+              earth: '#bc6c25',
+              cream: '#fefae0',
+              sky: '#e0f2fe'
+            }
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefae0;
+      color: #1c1917;
+      user-select: none;
+    }
+    
+    h1, h2, h3, .font-display {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    .unit-card {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .unit-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .bounce-subtle {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(221, 161, 94, 0.7); }
+      50% { box-shadow: 0 0 0 12px rgba(221, 161, 94, 0); }
+    }
+
+    /* Confetti Particle Styles */
+    .particle {
+      position: absolute;
+      pointer-events: none;
+      animation: fall 2.5s linear forwards;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+  <!-- TOP HEADER / COMMEMORATIVE BANNER -->
+  <header class="bg-rancho-green text-white shadow-xl border-b-4 border-rancho-earth relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute -right-10 -bottom-10 text-8xl opacity-10 font-bold select-none">🌽🚜</div>
+    
+    <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- Title & Subtitle -->
+        <div class="text-center md:text-left">
+          <span class="inline-block bg-rancho-yellow text-rancho-earth px-3 py-1 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase shadow-sm mb-2">
+            🌱 Computación del Rancho
+          </span>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide">
+            La Cosecha Digital Exacta 🌽
+          </h1>
+          <p class="text-rancho-cream text-base sm:text-lg mt-1 font-medium">
+            ¡Medidas de almacenamiento exactas explicadas con el maíz del campo!
+          </p>
+        </div>
+
+        <!-- Class Info Badge -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-center md:text-right shadow-inner w-full md:w-auto">
+          <div class="flex items-center justify-center md:justify-end gap-2 text-rancho-brightyellow font-bold text-sm">
+            <span>📅</span>
+            <span>18 de Octubre de 2026</span>
+          </div>
+          <div class="mt-2 text-sm text-white">
+            <p class="font-semibold text-rancho-cream">👨‍🏫 Profesor: <span class="text-white font-bold">Ing. Andrés Anuar</span></p>
+            <p class="mt-1 font-semibold text-rancho-cream">⭐ Alumnos Estrellas:</p>
+            <div class="flex justify-center md:justify-end gap-1.5 mt-1">
+              <span class="bg-rancho-yellow text-stone-900 px-2.5 py-0.5 rounded-full text-xs font-bold shadow-sm">Adilene</span>
+              <span class="bg-rancho-yellow text-stone-900 px-2.5 py-0.5 rounded-full text-xs font-bold shadow-sm">Aylani</span>
+              <span class="bg-rancho-yellow text-stone-900 px-2.5 py-0.5 rounded-full text-xs font-bold shadow-sm">Ronaldo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 space-y-12 flex-grow">
+
+    <!-- INTRODUCTORY BANNER -->
+    <section class="bg-gradient-to-r from-amber-100 to-amber-200 border-2 border-rancho-yellow rounded-3xl p-6 sm:p-8 text-stone-800 shadow-md">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="text-6xl sm:text-7xl text-center md:text-left flex-shrink-0 bounce-subtle">
+          🌽
+        </div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-rancho-earth mb-2">
+            Equivalencias Exactas de Almacenamiento
+          </h2>
+          <p class="text-base sm:text-lg leading-relaxed text-stone-700">
+            ¡Hoy aprendemos las cantidades <b>matemáticas exactas</b>! En computación (estándar decimal), cada medida es exactamente <b>1,000 veces</b> más grande que la anterior (excepto el Byte, que requiere exactamente <b>8 Bits</b>).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATIONAL CONTENT: CORN ANALOGY CARDS -->
+    <section>
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-rancho-green tracking-wide">
+          📊 Unidades con Cantidades Exactas
+        </h2>
+        <p class="text-stone-600 text-base sm:text-lg mt-1">
+          Las equivalencias reales utilizadas en los sistemas de almacenamiento digital.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. BIT -->
+        <div class="unit-card bg-white border-2 border-amber-300 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🌱</span>
+              <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Unidad Mínima</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">BIT</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Semilla de Maíz</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Es la unidad básica. Es un interruptor encendido (1) o apagado (0).
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-amber-100 bg-amber-50 rounded-2xl p-3 text-xs text-amber-900 font-medium text-center">
+            <b>Valor exacto:</b> 1 Bit
+          </div>
+        </div>
+
+        <!-- 2. BYTE -->
+        <div class="unit-card bg-white border-2 border-yellow-400 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🌽</span>
+              <span class="bg-yellow-100 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">8 Bits</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">BYTE</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Mazorca de Maíz</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Equivale a 1 letra o carácter escrito en la pantalla.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-yellow-100 bg-yellow-50 rounded-2xl p-3 text-xs text-yellow-900 font-medium text-center">
+            <b>Valor exacto:</b> 8 Bits = 1 Byte
+          </div>
+        </div>
+
+        <!-- 3. KILOBYTE -->
+        <div class="unit-card bg-white border-2 border-amber-500 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🛍️</span>
+              <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">1,000 Bytes</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">KILOBYTE (KB)</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Costal de Maíz</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Un costal con mil mazorcas. Guarda notas cortas o párrafos.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-amber-100 bg-amber-50 rounded-2xl p-3 text-xs text-amber-900 font-medium text-center">
+            <b>Valor exacto:</b> 1,000 Bytes = 1 KB (8,000 Bits)
+          </div>
+        </div>
+
+        <!-- 4. MEGABYTE -->
+        <div class="unit-card bg-white border-2 border-orange-400 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🛻</span>
+              <span class="bg-orange-100 text-orange-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">1,000 KB</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">MEGABYTE (MB)</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Camioneta / Troca</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Una troca cargada con mil costales. Útil para fotos y música.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-orange-100 bg-orange-50 rounded-2xl p-3 text-xs text-orange-900 font-medium text-center">
+            <b>Valor exacto:</b> 1,000 KB = 1 MB (1,000,000 Bytes)
+          </div>
+        </div>
+
+        <!-- 5. GIGABYTE -->
+        <div class="unit-card bg-white border-2 border-emerald-500 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🏚️</span>
+              <span class="bg-emerald-100 text-emerald-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">1,000 MB</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">GIGABYTE (GB)</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Bodega / Granero</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Un granero con mil camionetas. Para películas y juegos grandes.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-emerald-100 bg-emerald-50 rounded-2xl p-3 text-xs text-emerald-900 font-medium text-center">
+            <b>Valor exacto:</b> 1,000 MB = 1 GB (1,000,000,000 Bytes)
+          </div>
+        </div>
+
+        <!-- 6. TERABYTE -->
+        <div class="unit-card bg-white border-2 border-rancho-green rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-4xl">🌾</span>
+              <span class="bg-green-100 text-green-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">1,000 GB</span>
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900 mb-1">TERABYTE (TB)</h3>
+            <p class="text-sm font-semibold text-rancho-earth mb-3">1 Rancho Gigante</p>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Un rancho inmenso con mil bodegas llenas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-green-100 bg-green-50 rounded-2xl p-3 text-xs text-green-900 font-medium text-center">
+            <b>Valor exacto:</b> 1,000 GB = 1 TB (1,000,000,000,000 Bytes)
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MINIGAME SECTION -->
+    <section id="game-section" class="bg-white border-4 border-rancho-green rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+      
+      <!-- Header of Game -->
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="bg-rancho-brightyellow text-stone-900 font-black px-4 py-1.5 rounded-full text-xs sm:text-sm uppercase tracking-widest shadow-sm inline-block mb-3">
+          🎮 El Minijuego de Conversión Exacta
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-rancho-green">
+          ¡Cosecha y Convierte con Cifras Reales!
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base mt-2">
+          Cosecha semillas y usa la conversión automática o manual para medir exactamente <b>8 Bits = 1 Byte</b> y <b>1,000 de cada unidad</b>.
+        </p>
+      </div>
+
+      <!-- Player Selector & Scoreboard -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        
+        <!-- Player Select -->
+        <div class="bg-rancho-cream border-2 border-rancho-yellow rounded-2xl p-4 text-center">
+          <label for="player-select" class="block text-xs font-bold text-rancho-earth uppercase tracking-wider mb-2">
+            👨‍🌾 Elige quién está jugando:
+          </label>
+          <select id="player-select" class="bg-white border-2 border-rancho-yellow rounded-xl px-4 py-2 text-stone-800 font-bold text-base w-full focus:outline-none focus:ring-2 focus:ring-rancho-green cursor-pointer">
+            <option value="Adilene">👩‍🌾 Adilene</option>
+            <option value="Aylani">👩‍🌾 Aylani</option>
+            <option value="Ronaldo">👨‍🌾 Ronaldo</option>
+          </select>
+        </div>
+
+        <!-- Score & Level Badge -->
+        <div class="bg-rancho-green text-white rounded-2xl p-4 flex flex-col items-center justify-center shadow-md">
+          <span class="text-xs uppercase tracking-wider font-bold text-rancho-cream">Puntos del Rancho</span>
+          <span id="score-display" class="text-3xl font-black text-rancho-brightyellow">0 pts</span>
+        </div>
+
+        <!-- Current Title -->
+        <div class="bg-amber-100 border-2 border-amber-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center">
+          <span class="text-xs uppercase tracking-wider font-bold text-amber-900">Rango del Cosechador</span>
+          <span id="rank-display" class="text-lg font-bold text-rancho-earth">Sembrador Novato 🌱</span>
+        </div>
+
+      </div>
+
+      <!-- HARVEST CONTROLS (BUTTONS) -->
+      <div class="bg-amber-100 border-2 border-amber-300 rounded-2xl p-5 mb-8">
+        <h3 class="text-center font-bold text-rancho-earth mb-3 uppercase text-xs tracking-wider">🌾 Botones de Cosecha Directa</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <button id="btn-harvest-1" class="bg-rancho-yellow hover:bg-rancho-earth text-white font-bold py-3 px-4 rounded-xl shadow active:scale-95 transition-all text-sm flex items-center justify-center gap-2">
+            <span>🌱</span> <span>+1 Bit</span>
+          </button>
+          <button id="btn-harvest-100" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl shadow active:scale-95 transition-all text-sm flex items-center justify-center gap-2">
+            <span>🌱</span> <span>+100 Bits</span>
+          </button>
+          <button id="btn-harvest-1000" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl shadow active:scale-95 transition-all text-sm flex items-center justify-center gap-2">
+            <span>⚡</span> <span>+1,000 Bits</span>
+          </button>
+        </div>
+
+        <!-- Auto-harvest Tractor -->
+        <div class="mt-4 pt-3 border-t border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2 text-stone-800 text-xs sm:text-sm">
+            <span class="text-2xl">🚜</span>
+            <span><b>Tractor Automático:</b> Cosecha +100 Bits cada segundo.</span>
+          </div>
+          <button id="btn-buy-tractor" class="bg-rancho-green hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-xs shadow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+            Activar Tractor (Cuesta 1 KB) 🚜
+          </button>
+        </div>
+      </div>
+
+      <!-- CONVERSION BOARD WITH PROGRESS BARS -->
+      <div class="bg-amber-50/80 border-2 border-amber-200 rounded-3xl p-6 space-y-6">
+
+        <!-- 1. BITS & BYTES -->
+        <div class="bg-white p-5 rounded-2xl border-2 border-yellow-300 shadow-sm space-y-3">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🌽</span>
+              <div>
+                <h4 class="font-bold text-stone-900 text-base">Mazorcas (Bytes)</h4>
+                <p class="text-xs text-stone-500">Regla exactísima: <b>8 Bits = 1 Byte</b></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <span class="text-xl font-black text-yellow-800"><span id="count-byte">0</span> Bytes</span>
+              <button id="btn-make-byte" class="bg-yellow-400 hover:bg-yellow-500 text-stone-900 font-bold px-4 py-2 rounded-xl text-xs shadow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                Convertir (8 Bits) 🌽
+              </button>
+            </div>
+          </div>
+          <!-- Progress -->
+          <div>
+            <div class="flex justify-between text-xs font-bold text-stone-600 mb-1">
+              <span>Semillas para la siguiente mazorca:</span>
+              <span id="prog-text-byte">0 / 8 Bits</span>
+            </div>
+            <div class="w-full bg-stone-200 rounded-full h-3 overflow-hidden">
+              <div id="prog-bar-byte" class="bg-yellow-400 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. KILOBYTES -->
+        <div class="bg-white p-5 rounded-2xl border-2 border-amber-400 shadow-sm space-y-3">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🛍️</span>
+              <div>
+                <h4 class="font-bold text-stone-900 text-base">Costales (Kilobytes - KB)</h4>
+                <p class="text-xs text-stone-500">Regla exactísima: <b>1,000 Bytes = 1 KB</b></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <span class="text-xl font-black text-amber-900"><span id="count-kb">0</span> KB</span>
+              <button id="btn-make-kb" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-xl text-xs shadow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                Llenar Costal (1,000 Bytes) 🛍️
+              </button>
+            </div>
+          </div>
+          <!-- Progress -->
+          <div>
+            <div class="flex justify-between text-xs font-bold text-stone-600 mb-1">
+              <span>Mazorcas para el siguiente costal:</span>
+              <span id="prog-text-kb">0 / 1,000 Bytes</span>
+            </div>
+            <div class="w-full bg-stone-200 rounded-full h-3 overflow-hidden">
+              <div id="prog-bar-kb" class="bg-amber-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. MEGABYTES -->
+        <div class="bg-white p-5 rounded-2xl border-2 border-orange-300 shadow-sm space-y-3">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🛻</span>
+              <div>
+                <h4 class="font-bold text-stone-900 text-base">Camionetas (Megabytes - MB)</h4>
+                <p class="text-xs text-stone-500">Regla exactísima: <b>1,000 KB = 1 MB</b></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <span class="text-xl font-black text-orange-900"><span id="count-mb">0</span> MB</span>
+              <button id="btn-make-mb" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-xl text-xs shadow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                Cargar Troca (1,000 KB) 🛻
+              </button>
+            </div>
+          </div>
+          <!-- Progress -->
+          <div>
+            <div class="flex justify-between text-xs font-bold text-stone-600 mb-1">
+              <span>Costales para la siguiente troca:</span>
+              <span id="prog-text-mb">0 / 1,000 KB</span>
+            </div>
+            <div class="w-full bg-stone-200 rounded-full h-3 overflow-hidden">
+              <div id="prog-bar-mb" class="bg-orange-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. GIGABYTES -->
+        <div class="bg-white p-5 rounded-2xl border-2 border-emerald-300 shadow-sm space-y-3">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🏚️</span>
+              <div>
+                <h4 class="font-bold text-stone-900 text-base">Bodegas (Gigabytes - GB)</h4>
+                <p class="text-xs text-stone-500">Regla exactísima: <b>1,000 MB = 1 GB</b></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <span class="text-xl font-black text-emerald-900"><span id="count-gb">0</span> GB</span>
+              <button id="btn-make-gb" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs shadow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                Llenar Bodega (1,000 MB) 🏚️
+              </button>
+            </div>
+          </div>
+          <!-- Progress -->
+          <div>
+            <div class="flex justify-between text-xs font-bold text-stone-600 mb-1">
+              <span>Camionetas para la siguiente bodega:</span>
+              <span id="prog-text-gb">0 / 1,000 MB</span>
+            </div>
+            <div class="w-full bg-stone-200 rounded-full h-3 overflow-hidden">
+              <div id="prog-bar-gb" class="bg-emerald-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ultimate Goal: Terabyte Farm -->
+        <div class="bg-gradient-to-r from-rancho-green to-emerald-700 text-white p-6 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-4 text-center sm:text-left">
+            <span class="text-5xl">🌾</span>
+            <div>
+              <h4 class="text-2xl font-bold font-display text-rancho-brightyellow">Rancho Gigante (Terabyte - TB)</h4>
+              <p class="text-xs text-rancho-cream mt-1">Regla exactísima: <b>1,000 GB = 1 TB</b> (1,000,000,000,000 Bytes)</p>
+              <div class="text-xl font-black text-white mt-1" id="count-tb">0 TB</div>
+            </div>
+          </div>
+          <button id="btn-make-tb" class="bg-rancho-brightyellow hover:bg-yellow-400 text-stone-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl text-base transition-all transform hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed w-full sm:w-auto">
+            Construir Rancho (1,000 GB) 🌾
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Live Exact Total Display -->
+      <div class="mt-6 bg-stone-900 text-rancho-brightyellow p-4 rounded-2xl text-center font-mono text-xs sm:text-sm">
+        <b>Total Exacto Acumulado en Semillas:</b> <span id="total-bits-exact">0</span> Bits (<span id="total-bytes-exact">0</span> Bytes)
+      </div>
+
+      <!-- Reset / Sound toggle -->
+      <div class="mt-4 flex flex-wrap justify-between items-center gap-4 text-xs font-semibold text-stone-500">
+        <button id="btn-sound-toggle" class="hover:text-stone-800 flex items-center gap-1.5 bg-stone-100 px-3 py-1.5 rounded-lg border border-stone-200">
+          <span>🔊</span> <span id="sound-status-text">Sonido: Activado</span>
+        </button>
+        <button id="btn-reset" class="hover:text-red-600 underline">
+          Reiniciar Juego
+        </button>
+      </div>
+
+    </section>
+
+    <!-- QUIZ / REINFORCEMENT SECTION -->
+    <section class="bg-amber-100/60 border-2 border-amber-300 rounded-3xl p-6 sm:p-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h3 class="text-2xl sm:text-3xl font-bold text-rancho-earth mb-3">
+          ❓ Repaso con Cifras Reales
+        </h3>
+        <p class="text-stone-700 text-sm mb-6">
+          Demuestra lo que aprendiste hoy 18/10/2026 con el Ing. Andrés Anuar.
+        </p>
+
+        <div id="quiz-container" class="space-y-4 text-left">
+          <!-- Quiz JS injects content here -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-rancho-earth text-amber-100 py-8 border-t-4 border-rancho-yellow mt-12">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+      <p class="font-bold text-lg text-white">
+        🌾 Clase de Computación del Rancho
+      </p>
+      <p class="text-xs sm:text-sm text-amber-200">
+        Recordatorio especial del <b>18 de Octubre de 2026</b> • Para Adilene, Aylani y Ronaldo
+      </p>
+      <p class="text-xs text-amber-300/80">
+        Diseñado con ❤️ por el <b>Ing. Andrés Anuar</b> para enseñar las medidas de almacenamiento exactas.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT ENGINE WITH EXACT MATH & AUTO-CONVERSION -->
+  <script>
+    // --- WEB AUDIO API SOUND ENGINE ---
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) this.ctx = new AudioCtx();
+        }
+      }
+
+      playTone(freq, type, duration) {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type || 'sine';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {
+          console.log('Audio error', e);
+        }
+      }
+
+      playHarvest() { this.playTone(523.25, 'triangle', 0.08); }
+      playConvert() {
+        this.playTone(659.25, 'sine', 0.12);
+        setTimeout(() => this.playTone(783.99, 'sine', 0.15), 60);
+      }
+      playWin() {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => this.playTone(freq, 'triangle', 0.3), idx * 100);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    // --- GAME STATE WITH EXACT VALUES ---
+    const gameState = {
+      player: 'Adilene',
+      score: 0,
+      bits: 0,
+      bytes: 0,
+      kb: 0,
+      mb: 0,
+      gb: 0,
+      tb: 0,
+      hasTractor: false
+    };
+
+    // --- DOM ELEMENTS ---
+    const playerSelect = document.getElementById('player-select');
+    const scoreDisplay = document.getElementById('score-display');
+    const rankDisplay = document.getElementById('rank-display');
+
+    const countByte = document.getElementById('count-byte');
+    const countKb = document.getElementById('count-kb');
+    const countMb = document.getElementById('count-mb');
+    const countGb = document.getElementById('count-gb');
+    const countTb = document.getElementById('count-tb');
+
+    const progTextByte = document.getElementById('prog-text-byte');
+    const progBarByte = document.getElementById('prog-bar-byte');
+    const progTextKb = document.getElementById('prog-text-kb');
+    const progBarKb = document.getElementById('prog-bar-kb');
+    const progTextMb = document.getElementById('prog-text-mb');
+    const progBarMb = document.getElementById('prog-bar-mb');
+    const progTextGb = document.getElementById('prog-text-gb');
+    const progBarGb = document.getElementById('prog-bar-gb');
+
+    const totalBitsExact = document.getElementById('total-bits-exact');
+    const totalBytesExact = document.getElementById('total-bytes-exact');
+
+    const btnHarvest1 = document.getElementById('btn-harvest-1');
+    const btnHarvest100 = document.getElementById('btn-harvest-100');
+    const btnHarvest1000 = document.getElementById('btn-harvest-1000');
+    const btnBuyTractor = document.getElementById('btn-buy-tractor');
+
+    const btnMakeByte = document.getElementById('btn-make-byte');
+    const btnMakeKb = document.getElementById('btn-make-kb');
+    const btnMakeMb = document.getElementById('btn-make-mb');
+    const btnMakeGb = document.getElementById('btn-make-gb');
+    const btnMakeTb = document.getElementById('btn-make-tb');
+
+    const btnReset = document.getElementById('btn-reset');
+    const btnSoundToggle = document.getElementById('btn-sound-toggle');
+    const soundStatusText = document.getElementById('sound-status-text');
+
+    // --- RANGOS Y TITULOS ---
+    function updateRank() {
+      let rank = "Sembrador Novato 🌱";
+      if (gameState.tb > 0) rank = "👑 Gran Dueño del Rancho Digital 🌾";
+      else if (gameState.gb > 0) rank = "🏚️ Guardián de Bodegas";
+      else if (gameState.mb > 0) rank = "🛻 Chofer de Trocas Digitales";
+      else if (gameState.kb > 0) rank = "🛍️ Empacador de Costales";
+      else if (gameState.bytes > 0) rank = "🌽 Cosechador de Mazorcas";
+      
+      rankDisplay.innerText = `${rank}`;
+    }
+
+    // --- HELPER NUMBER FORMATTER ---
+    function formatNum(n) {
+      return n.toLocaleString('es-MX');
+    }
+
+    // --- RENDER GAME STATE & PROGRESS BARS ---
+    function render() {
+      countByte.innerText = formatNum(gameState.bytes);
+      countKb.innerText = formatNum(gameState.kb);
+      countMb.innerText = formatNum(gameState.mb);
+      countGb.innerText = formatNum(gameState.gb);
+      countTb.innerText = formatNum(gameState.tb);
+
+      scoreDisplay.innerText = `${formatNum(gameState.score)} pts`;
+
+      // Progress bar Calculations
+      const bitsForByte = gameState.bits % 8;
+      progTextByte.innerText = `${bitsForByte} / 8 Bits`;
+      progBarByte.style.width = `${(bitsForByte / 8) * 100}%`;
+
+      const bytesForKb = gameState.bytes % 1000;
+      progTextKb.innerText = `${formatNum(bytesForKb)} / 1,000 Bytes`;
+      progBarKb.style.width = `${(bytesForKb / 1000) * 100}%`;
+
+      const kbForMb = gameState.kb % 1000;
+      progTextMb.innerText = `${formatNum(kbForMb)} / 1,000 KB`;
+      progBarMb.style.width = `${(kbForMb / 1000) * 100}%`;
+
+      const mbForGb = gameState.mb % 1000;
+      progTextGb.innerText = `${formatNum(mbForGb)} / 1,000 MB`;
+      progBarGb.style.width = `${(mbForGb / 1000) * 100}%`;
+
+      // Enable/disable buttons based on EXACT numbers
+      btnMakeByte.disabled = gameState.bits < 8;
+      btnMakeKb.disabled = gameState.bytes < 1000;
+      btnMakeMb.disabled = gameState.kb < 1000;
+      btnMakeGb.disabled = gameState.mb < 1000;
+      btnMakeTb.disabled = gameState.gb < 1000;
+
+      btnBuyTractor.disabled = gameState.kb < 1 || gameState.hasTractor;
+      if (gameState.hasTractor) {
+        btnBuyTractor.innerText = '🚜 Tractor Activo (+100 Bits/seg)';
+      }
+
+      // Total Exact Bits calculation
+      const totalInBits = gameState.bits + 
+        (gameState.bytes * 8) + 
+        (gameState.kb * 8000) + 
+        (gameState.mb * 8000000) + 
+        (gameState.gb * 8000000000) + 
+        (gameState.tb * 8000000000000);
+
+      totalBitsExact.innerText = formatNum(totalInBits);
+      totalBytesExact.innerText = formatNum(Math.floor(totalInBits / 8));
+
+      updateRank();
+    }
+
+    // --- ADD BITS HELPER WITH OPTIONAL AUTO-CONVERT ---
+    function addBits(amount) {
+      gameState.bits += amount;
+      gameState.score += amount;
+      render();
+    }
+
+    // --- PARTICLES / CONFETTI ---
+    function triggerParticles() {
+      const colors = ['#ffb703', '#fb8500', '#2d6a4f', '#52b788', '#dda15e'];
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.width = (Math.random() * 12 + 8) + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.borderRadius = '50%';
+        document.body.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 2500);
+      }
+    }
+
+    // --- EVENT LISTENERS ---
+
+    playerSelect.addEventListener('change', (e) => {
+      gameState.player = e.target.value;
+      sound.playHarvest();
+    });
+
+    btnHarvest1.addEventListener('click', () => {
+      addBits(1);
+      sound.playHarvest();
+    });
+
+    btnHarvest100.addEventListener('click', () => {
+      addBits(100);
+      sound.playHarvest();
+    });
+
+    btnHarvest1000.addEventListener('click', () => {
+      addBits(1000);
+      sound.playHarvest();
+    });
+
+    btnBuyTractor.addEventListener('click', () => {
+      if (gameState.kb >= 1 && !gameState.hasTractor) {
+        gameState.kb -= 1;
+        gameState.hasTractor = true;
+        sound.playWin();
+        render();
+      }
+    });
+
+    // Auto Tractor Loop
+    setInterval(() => {
+      if (gameState.hasTractor) {
+        addBits(100);
+      }
+    }, 1000);
+
+    // MANUAL CONVERT BUTTONS
+    btnMakeByte.addEventListener('click', () => {
+      if (gameState.bits >= 8) {
+        const qty = Math.floor(gameState.bits / 8);
+        gameState.bits %= 8;
+        gameState.bytes += qty;
+        gameState.score += qty * 10;
+        sound.playConvert();
+        render();
+      }
+    });
+
+    btnMakeKb.addEventListener('click', () => {
+      if (gameState.bytes >= 1000) {
+        const qty = Math.floor(gameState.bytes / 1000);
+        gameState.bytes %= 1000;
+        gameState.kb += qty;
+        gameState.score += qty * 500;
+        sound.playConvert();
+        render();
+      }
+    });
+
+    btnMakeMb.addEventListener('click', () => {
+      if (gameState.kb >= 1000) {
+        const qty = Math.floor(gameState.kb / 1000);
+        gameState.kb %= 1000;
+        gameState.mb += qty;
+        gameState.score += qty * 5000;
+        sound.playConvert();
+        render();
+      }
+    });
+
+    btnMakeGb.addEventListener('click', () => {
+      if (gameState.mb >= 1000) {
+        const qty = Math.floor(gameState.mb / 1000);
+        gameState.mb %= 1000;
+        gameState.gb += qty;
+        gameState.score += qty * 50000;
+        sound.playConvert();
+        render();
+      }
+    });
+
+    btnMakeTb.addEventListener('click', () => {
+      if (gameState.gb >= 1000) {
+        const qty = Math.floor(gameState.gb / 1000);
+        gameState.gb %= 1000;
+        gameState.tb += qty;
+        gameState.score += qty * 1000000;
+        sound.playWin();
+        triggerParticles();
+        render();
+        alert(`🎉 ¡EXCELENTE TRABAJO ${gameState.player.toUpperCase()}! 🎉\n\n¡Has reunido 1 Terabyte con las medidas exactas!\n1 TB = 1,000 GB = 1,000,000 MB = 1,000,000,000 KB = 1,000,000,000,000 Bytes.`);
+      }
+    });
+
+    btnReset.addEventListener('click', () => {
+      if (confirm('¿Quieres reiniciar tu cosecha desde cero?')) {
+        gameState.bits = 0;
+        gameState.bytes = 0;
+        gameState.kb = 0;
+        gameState.mb = 0;
+        gameState.gb = 0;
+        gameState.tb = 0;
+        gameState.score = 0;
+        gameState.hasTractor = false;
+        render();
+      }
+    });
+
+    btnSoundToggle.addEventListener('click', () => {
+      sound.enabled = !sound.enabled;
+      soundStatusText.innerText = sound.enabled ? 'Sonido: Activado' : 'Sonido: Desactivado';
+    });
+
+    // --- QUIZ LOGIC WITH EXACT MATH ---
+    const quizData = [
+      {
+        q: "¿Cuántos Bytes exactos se necesitan para formar 1 Kilobyte (KB)?",
+        options: ["8 Bytes", "1,000 Bytes", "1,000,000 Bytes"],
+        correct: 1,
+        explanation: "¡Exacto! 1 Kilobyte (KB) equivale a EXACTAMENTE 1,000 Bytes (1,000 mazorcas)."
+      },
+      {
+        q: "¿Cuántos Bits se necesitan para hacer 1 Byte (1 mazorca)?",
+        options: ["EXACTAMENTE 8 Bits", "1,000 Bits", "100 Bits"],
+        correct: 0,
+        explanation: "¡Muy bien! 1 Byte se compone de exactamente 8 Bits (semillas)."
+      },
+      {
+        q: "¿Cuántos Megabytes (MB) necesitas para llenar 1 Gigabyte (GB)?",
+        options: ["10 MB", "500 MB", "EXACTAMENTE 1,000 MB"],
+        correct: 2,
+        explanation: "¡Eso es! 1,000 Megabytes hacen 1 Gigabyte (1,000 camionetas para 1 bodega)."
+      }
+    ];
+
+    function loadQuiz() {
+      const container = document.getElementById('quiz-container');
+      container.innerHTML = '';
+
+      quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-5 rounded-2xl border-2 border-amber-200 shadow-sm';
+        
+        let optionsHtml = '';
+        item.options.forEach((opt, optIdx) => {
+          optionsHtml += `
+            <button onclick="checkQuiz(${index}, ${optIdx})" class="quiz-btn-${index} w-full text-left bg-amber-50 hover:bg-rancho-yellow hover:text-white text-stone-800 font-semibold p-3 rounded-xl border border-amber-200 text-sm transition-all mb-2">
+              ${opt}
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <p class="font-bold text-stone-900 text-base mb-3">${index + 1}. ${item.q}</p>
+          <div>${optionsHtml}</div>
+          <div id="quiz-feedback-${index}" class="hidden mt-2 p-3 rounded-xl text-xs font-bold"></div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    window.checkQuiz = function(qIndex, selectedOpt) {
+      const item = quizData[qIndex];
+      const feedback = document.getElementById(`quiz-feedback-${qIndex}`);
+      const buttons = document.querySelectorAll(`.quiz-btn-${qIndex}`);
+
+      buttons.forEach(btn => btn.disabled = true);
+
+      feedback.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+      if (selectedOpt === item.correct) {
+        feedback.classList.add('bg-green-100', 'text-green-900');
+        feedback.innerText = `✅ ${item.explanation}`;
+        sound.playWin();
+      } else {
+        feedback.classList.add('bg-red-100', 'text-red-900');
+        feedback.innerText = `❌ La respuesta correcta era: ${item.options[item.correct]}`;
+        sound.playTone(200, 'sawtooth', 0.2);
+      }
+    };
+
+    // --- SERVICE WORKER INJECTION ---
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        const swCode = `
+          const CACHE_NAME = 'rancho-digital-exact-v1';
+          self.addEventListener('install', (e) => {
+            e.waitUntil(
+              caches.open(CACHE_NAME).then((cache) => cache.addAll(['./']))
+            );
+          });
+          self.addEventListener('fetch', (e) => {
+            e.respondWith(
+              caches.match(e.request).then((res) => res || fetch(e.request))
+            );
+          });
+        `;
+        const blob = new Blob([swCode], { type: 'application/javascript' });
+        const swUrl = URL.createObjectURL(blob);
+        navigator.serviceWorker.register(swUrl).catch(err => console.log('SW fail', err));
+      });
+    }
+
+    // INITIALIZE PAGE
+    window.onload = function() {
+      render();
+      loadQuiz();
+    };
+  </script>
+</body>
+</html>

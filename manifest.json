@@ -1,0 +1,24 @@
+{
+  "name": "Manhattan School - Computación y Habilidades Digitales",
+  "short_name": "ManhattanEdu",
+  "description": "Plataforma educativa de computación para jóvenes en Zirándaro y Aratichanguio, impartida por el Ing. Andrés Anuar.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0c2340",
+  "theme_color": "#0c2340",
+  "icons": [
+    {
+      "src": "img/icono.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/MANHATTAN SCHOOL LOGO.jpg",
+      "sizes": "200x200",
+      "type": "image/jpeg"
+    }
+  ]
+}

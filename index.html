@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manhattan School — Plataforma de Computación & Habilidades Digitales</title>
+  <meta name="description" content="Plataforma educativa de Manhattan School para jóvenes de Zirándaro y Aratichanguio, Guerrero. Aprende hardware, software, la Cosecha Digital y desarrollo web con el Ing. Andrés Anuar.">
+  <meta name="theme-color" content="#0a192f">
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="img/icono.png">
+  <link rel="apple-touch-icon" href="img/icono.png">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="bg-glow-orb-1" aria-hidden="true"></div>
+  <div class="bg-glow-orb-2" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="#inicio" class="brand-wrapper" title="Manhattan School">
+        <img src="img/MANHATTAN SCHOOL LOGO.jpg" alt="Logo Manhattan School" class="brand-logo-img">
+        <div class="brand-info">
+          <h1>Manhattan School</h1>
+          <p>Computación & Habilidades Digitales • Zirándaro</p>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs" aria-label="Navegación principal">
+        <button class="nav-tab-btn active" data-tab="inicio" aria-selected="true">
+          <span>🏠</span> Inicio
+        </button>
+        <button class="nav-tab-btn" data-tab="clases" aria-selected="false">
+          <span>💻</span> Clases Zirándaro
+        </button>
+        <button class="nav-tab-btn" data-tab="evaluaciones" aria-selected="false">
+          <span>🤖</span> Evaluaciones Gemini
+        </button>
+        <button class="nav-tab-btn" data-tab="sedes" aria-selected="false">
+          <span>📍</span> Sedes & Contacto
+        </button>
+      </nav>
+
+      <!-- Header CTAs -->
+      <div class="header-actions">
+        <button id="btn-pwa-install" class="btn btn-outline" style="display: none; padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Instalar Aplicación PWA">
+          <span>📲</span> Instalar App
+        </button>
+        <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20para%20inscribirme%20en%20el%20curso%20de%20computaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+          <span>💬</span> Inscríbete
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Body -->
+  <main class="main-content">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: INICIO & BIENVENIDA                -->
+    <!-- ========================================== -->
+    <section id="inicio" class="tab-panel active">
+      
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="badge-row">
+          <span class="badge badge-gold">🌽 Metodología La Cosecha Digital</span>
+          <span class="badge badge-emerald">📅 Clase: 18 de Octubre de 2026</span>
+          <span class="badge badge-cyan">👨‍🏫 Instructor: Ing. Andrés Anuar</span>
+        </div>
+        <h2 class="hero-title">
+          Impulsando el Talento y el Futuro Tecnológico de los <span class="highlight">Jóvenes de Tierra Caliente</span>
+        </h2>
+        <p class="hero-subtitle">
+          En <strong>Manhattan School</strong> transformamos la educación computacional en una experiencia viva, interactiva y conectada con nuestra identidad. Mediante herramientas digitales de vanguardia e Inteligencia Artificial, capacitamos a las nuevas generaciones de <strong>Zirándaro de los Chávez</strong> y <strong>Aratichanguio, Guerrero</strong> para liderar la era digital.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="document.querySelector('[data-tab=clases]').click();">
+            <span>🚀</span> Ver Clase de Hoy en Zirándaro
+          </button>
+          <button class="btn btn-outline" onclick="document.querySelector('[data-tab=evaluaciones]').click();">
+            <span>⭐</span> Proyectos de los Alumnos
+          </button>
+          <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20m%C3%A1s%20detalles%20sobre%20las%20clases%20en%20Manhattan%20School" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+            <span>💬</span> WhatsApp: 453 116 6223
+          </a>
+        </div>
+      </div>
+
+      <!-- Feature Grid: Why Computing Matters -->
+      <div style="margin-bottom: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.5rem; color: #ffffff;">
+          ¿Por qué la computación transforma vidas?
+        </h3>
+        <p style="color: var(--text-muted); font-size: 1rem; max-width: 800px;">
+          Aprender computación no es solo usar una máquina; es estructurar el pensamiento, resolver problemas reales de nuestra comunidad y abrir puertas profesionales en todo el mundo.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="glass-card">
+          <div class="card-icon" style="color: #fbbf24;">🧠</div>
+          <h4 class="card-title">Pensamiento Lógico</h4>
+          <p class="card-desc">
+            Los alumnos aprenden a descomponer retos complejos en pasos ordenados, fomentando habilidades analíticas para la escuela y la vida diaria.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="card-icon" style="color: #38bdf8;">🖥️</div>
+          <h4 class="card-title">Hardware & Software</h4>
+          <p class="card-desc">
+            Comprenden a fondo la anatomía de los equipos: CPU, memorias, periféricos de entrada y salida, así como los sistemas operativos.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="card-icon" style="color: #34d399;">🌾</div>
+          <h4 class="card-title">Educación Contextual</h4>
+          <p class="card-desc">
+            Explicamos conceptos abstractos con metáforas locales como <em>"La Cosecha del Maíz"</em> para que los Bits, Bytes y Gigabytes sean inolvidables.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="card-icon" style="color: #f43f5e;">🤖</div>
+          <h4 class="card-title">IA con Gemini</h4>
+          <p class="card-desc">
+            Fomentamos el uso constructivo de la IA: los alumnos explican sus aprendizajes y la IA genera código web para sus evaluaciones.
+          </p>
+        </div>
+      </div>
+
+      <!-- Instructor & Community Spotlight -->
+      <div class="glass-card" style="background: linear-gradient(135deg, rgba(17, 34, 64, 0.95) 0%, rgba(10, 25, 47, 0.95) 100%); border-left: 4px solid var(--accent-gold); margin-bottom: 2.5rem;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;">
+          <div style="flex: 1 1 500px;">
+            <span class="badge badge-gold" style="margin-bottom: 0.75rem;">👨‍🏫 Dirección Académica</span>
+            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #ffffff; margin-bottom: 0.5rem;">
+              Impartido por el Ing. Andrés Anuar
+            </h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
+              Con una visión dedicada a potenciar las capacidades de niños y jóvenes en Tierra Caliente, el Ing. Andrés Anuar lidera este programa formativo presencial en <strong>Zirándaro</strong> y <strong>Aratichanguio</strong>, integrando tecnología de vanguardia, pedagogía participativa y aplicaciones PWA que funcionan incluso sin conexión a internet.
+            </p>
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+              <span style="color: var(--accent-gold-light); font-weight: 600; font-size: 0.9rem;">📍 Sedes: Zirándaro & Aratichanguio</span>
+              <span style="color: var(--text-muted);">•</span>
+              <span style="color: #34d399; font-weight: 600; font-size: 0.9rem;">📱 Contacto directo: +52 453 116 6223</span>
+            </div>
+          </div>
+          <div>
+            <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20pedir%20informes%20para%20inscribirme%20en%20Manhattan%20School" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size: 1rem; padding: 0.85rem 1.6rem;">
+              <span>💬</span> Escribir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: CLASES DE ZIRÁNDARO                -->
+    <!-- ========================================== -->
+    <section id="clases" class="tab-panel">
+      
+      <!-- Session Header -->
+      <div style="margin-bottom: 2rem;">
+        <div class="badge-row">
+          <span class="badge badge-emerald">📍 Sede Zirándaro de los Chávez</span>
+          <span class="badge badge-gold">🗓️ 18 de Octubre de 2026</span>
+          <span class="badge badge-cyan">⭐ Sesión Fundamental</span>
+        </div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #ffffff; margin-bottom: 0.5rem;">
+          Clase de Computación: Arquitectura, Componentes y Medidas
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 850px;">
+          En la clase impartida hoy en Zirándaro por el <strong>Ing. Andrés Anuar</strong> con los alumnos destacados <strong>Adilene</strong>, <strong>Aylani</strong> y <strong>Ronaldo</strong>, cubrimos de forma práctica los pilares de la informática moderna y las magnitudes de almacenamiento digital.
+        </p>
+      </div>
+
+      <!-- Syllabus Grid -->
+      <div class="grid-3">
+        <!-- Hardware vs Software -->
+        <div class="glass-card">
+          <div class="card-icon" style="color: #38bdf8;">🖥️</div>
+          <h3 class="card-title">1. Hardware vs. Software</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">
+            Diferenciación conceptual básica entre lo físico y lo lógico:
+          </p>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong style="color: var(--accent-gold-light);">• Hardware:</strong> Todo lo tangible (gabinete, pantalla, circuitos, teclado, disco).</li>
+            <li><strong style="color: #34d399;">• Software:</strong> Las instrucciones y programas (Windows, Chrome, juegos, apps).</li>
+          </ul>
+        </div>
+
+        <!-- Components & Peripherals -->
+        <div class="glass-card">
+          <div class="card-icon" style="color: #fbbf24;">🔌</div>
+          <h3 class="card-title">2. Componentes & Periféricos</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">
+            Flujo de datos y comunicación entre el usuario y la máquina:
+          </p>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong style="color: #38bdf8;">• Entrada:</strong> Teclado, ratón (mouse), micrófonos y cámaras.</li>
+            <li><strong style="color: #f43f5e;">• Salida:</strong> Monitor, bocinas e impresoras.</li>
+            <li><strong style="color: #a78bfa;">• Mixtos / Almacenamiento:</strong> Memorias USB, discos portátiles.</li>
+          </ul>
+        </div>
+
+        <!-- Operating Systems -->
+        <div class="glass-card">
+          <div class="card-icon" style="color: #34d399;">⚙️</div>
+          <h3 class="card-title">3. Sistemas Operativos</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">
+            El director de orquesta que coordina recursos y memoria:
+          </p>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light); display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong style="color: #60a5fa;">• Windows:</strong> Ecosistema líder en computadoras personales y oficinas.</li>
+            <li><strong style="color: #4ade80;">• Android:</strong> Sistema táctil en teléfonos y tabletas.</li>
+            <li><strong style="color: #f59e0b;">• Linux:</strong> Núcleo robusto para servidores y desarrolladores.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- The Corn Harvest Table (Exact Storage) -->
+      <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #ffffff; margin-bottom: 0.5rem;">
+          🌽 "La Cosecha Digital": Unidades de Almacenamiento Exactas
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+          Para comprender magnitudes abstractas de bits y bytes, utilizamos la analogía del maíz del campo de Tierra Caliente:
+        </p>
+
+        <div class="corn-table-wrapper">
+          <table class="corn-table">
+            <thead>
+              <tr>
+                <th>Unidad</th>
+                <th>Símbolo</th>
+                <th>Equivalencia Exacta</th>
+                <th>Metáfora del Campo (Zirándaro)</th>
+                <th>Ejemplo en la Vida Real</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bit</strong></td>
+                <td><code style="color: var(--accent-gold-light);">b</code></td>
+                <td>0 o 1 (Impulso eléctrico)</td>
+                <td>🌽 <strong>1 grano o semilla de maíz</strong></td>
+                <td>Un interruptor prendido o apagado</td>
+              </tr>
+              <tr>
+                <td><strong>Byte</strong></td>
+                <td><code style="color: var(--accent-gold-light);">B</code></td>
+                <td>8 Bits</td>
+                <td>🌽 <strong>1 mazorca entera</strong></td>
+                <td>1 letra o carácter de texto</td>
+              </tr>
+              <tr>
+                <td><strong>Kilobyte</strong></td>
+                <td><code style="color: var(--accent-gold-light);">KB</code></td>
+                <td>1,000 Bytes</td>
+                <td>🌾 <strong>1 costal lleno de mazorcas</strong></td>
+                <td>Un párrafo corto de lectura</td>
+              </tr>
+              <tr>
+                <td><strong>Megabyte</strong></td>
+                <td><code style="color: var(--accent-gold-light);">MB</code></td>
+                <td>1,000 KB (1,000,000 B)</td>
+                <td>🛻 <strong>1 camioneta cargada de costales</strong></td>
+                <td>Una canción en MP3 o foto digital</td>
+              </tr>
+              <tr>
+                <td><strong>Gigabyte</strong></td>
+                <td><code style="color: var(--accent-gold-light);">GB</code></td>
+                <td>1,000 MB</td>
+                <td>🏢 <strong>1 bodega o troje comunitaria</strong></td>
+                <td>Una película en alta definición</td>
+              </tr>
+              <tr>
+                <td><strong>Terabyte</strong></td>
+                <td><code style="color: var(--accent-gold-light);">TB</code></td>
+                <td>1,000 GB</td>
+                <td>🚜 <strong>Silos industriales de granos</strong></td>
+                <td>Una biblioteca entera con miles de libros</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Embedded Class App -->
+      <div class="embed-container">
+        <div class="embed-toolbar">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.2rem;">🌽</span>
+            <span style="font-family: var(--font-heading); font-weight: 700; color: #ffffff;">
+              La Cosecha Digital — Aplicación Interactiva de la Clase
+            </span>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <a href="clase_de_computaci_n_la_cosecha_digital.html" target="_blank" class="btn btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.8rem;">
+              <span>↗️</span> Abrir en Pestaña Completa
+            </a>
+          </div>
+        </div>
+        <iframe src="clase_de_computaci_n_la_cosecha_digital.html" class="embed-iframe" title="Aplicación Interactiva La Cosecha Digital"></iframe>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: EVALUACIONES GEMINI AI             -->
+    <!-- ========================================== -->
+    <section id="evaluaciones" class="tab-panel">
+      
+      <div style="margin-bottom: 2rem;">
+        <div class="badge-row">
+          <span class="badge badge-cyan">🤖 Inteligencia Artificial Educativa</span>
+          <span class="badge badge-gold">⭐ Alumnos Destacados</span>
+          <span class="badge badge-emerald">📈 Registro Antes y Después</span>
+        </div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #ffffff; margin-bottom: 0.5rem;">
+          Evaluaciones de los Alumnos con Gemini AI
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 850px;">
+          En esta dinámica pedagógica innovadora realizada el <strong>18 de Octubre de 2026</strong>, cada alumno le explicó a la Inteligencia Artificial <strong>Gemini</strong> con sus propias palabras los conceptos aprendidos en Zirándaro. Gemini analizó su nivel de asimilación y estructuró su primera página web educativa.
+        </p>
+      </div>
+
+      <!-- Student Cards Grid -->
+      <div class="grid-3">
+        
+        <!-- Adilene Card -->
+        <div class="student-card adilene">
+          <div class="student-header">
+            <div class="student-avatar" style="border-color: #f59e0b; color: #f59e0b;">👩‍🎓</div>
+            <div class="student-meta">
+              <h3>Adilene</h3>
+              <span>Alumna Destacada • Zirándaro</span>
+            </div>
+          </div>
+          
+          <div class="student-dialogue-box">
+            <strong>Explicación de Adilene a Gemini:</strong>
+            "La computadora tiene partes que tocamos como el teclado y mouse para mandar información (entrada) y la pantalla para verla (salida). El CPU es el cerebro."
+          </div>
+
+          <div class="gemini-feedback-box">
+            <strong>Evaluación de Gemini:</strong> Retención sobresaliente en clasificación de periféricos y arquitectura del procesador.
+          </div>
+
+          <button class="btn btn-primary btn-preview-student" data-student="Adilene" style="width: 100%;">
+            <span>👀</span> Ver Portafolio Web de Adilene
+          </button>
+        </div>
+
+        <!-- Aylani Card -->
+        <div class="student-card aylani">
+          <div class="student-header">
+            <div class="student-avatar" style="border-color: #10b981; color: #10b981;">👩‍🎓</div>
+            <div class="student-meta">
+              <h3>Aylani</h3>
+              <span>Alumna Destacada • Zirándaro</span>
+            </div>
+          </div>
+          
+          <div class="student-dialogue-box">
+            <strong>Explicación de Aylani a Gemini:</strong>
+            "El hardware es todo lo físico y duro de la computadora, y el software son los programas y sistemas como Windows que no podemos tocar pero hacen funcionar todo."
+          </div>
+
+          <div class="gemini-feedback-box">
+            <strong>Evaluación de Gemini:</strong> Excelente abstracción del concepto de software intangible y funciones del sistema operativo.
+          </div>
+
+          <button class="btn btn-primary btn-preview-student" data-student="Aylani" style="width: 100%;">
+            <span>👀</span> Ver Portafolio Web de Aylani
+          </button>
+        </div>
+
+        <!-- Ronaldo Card -->
+        <div class="student-card ronaldo">
+          <div class="student-header">
+            <div class="student-avatar" style="border-color: #06b6d4; color: #06b6d4;">👨‍🎓</div>
+            <div class="student-meta">
+              <h3>Ronaldo</h3>
+              <span>Alumno Destacado • Zirándaro</span>
+            </div>
+          </div>
+          
+          <div class="student-dialogue-box">
+            <strong>Explicación de Ronaldo a Gemini:</strong>
+            "1 Bit es un grano de maíz. 8 granos hacen 1 mazorca (Byte). 1,000 mazorcas hacen 1 costal (Kilobyte). 1,000 costales llenan la camioneta (Megabyte) y 1,000 camionetas la bodega (Gigabyte)."
+          </div>
+
+          <div class="gemini-feedback-box">
+            <strong>Evaluación de Gemini:</strong> Dominio matemático impecable de equivalencias exactas con el modelo agrícola de Tierra Caliente.
+          </div>
+
+          <button class="btn btn-primary btn-preview-student" data-student="Ronaldo" style="width: 100%;">
+            <span>👀</span> Ver Portafolio Web de Ronaldo
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Before and After Evolution Timeline -->
+      <div class="glass-card" style="margin-top: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem;">
+          📈 Seguimiento de Evolución: "El Antes y el Después"
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Este registro público en GitHub permite a los estudiantes, padres de familia y a la comunidad constatar cómo el conocimiento digital transforma sus vidas sesión a sesión:
+        </p>
+
+        <div class="grid-3" style="margin-bottom: 0;">
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 1.25rem;">
+            <span style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Etapa Inicial</span>
+            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #cbd5e1; margin-top: 0.35rem; margin-bottom: 0.5rem;">
+              🌱 El Antes
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+              Uso empírico del teléfono celular sin comprender qué es un archivo, la memoria RAM, los bits o cómo opera un procesador.
+            </p>
+          </div>
+
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.25rem;">
+            <span style="color: var(--accent-gold-light); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Sesión 18/10/2026</span>
+            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #ffffff; margin-top: 0.35rem; margin-bottom: 0.5rem;">
+              🌽 El Presente
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-light); line-height: 1.6;">
+              Comprensión total de hardware, software, magnitudes exactas con la Cosecha del Maíz e interacción directa con Gemini AI para generar sus webs.
+            </p>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.25rem;">
+            <span style="color: #34d399; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Próximas Sesiones</span>
+            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #ffffff; margin-top: 0.35rem; margin-bottom: 0.5rem;">
+              🚀 El Futuro
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-light); line-height: 1.6;">
+              Desarrollo de proyectos web interactivos propios, programación de videojuegos educativos y creación de soluciones para sus comunidades.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: SEDES & INSCRIPCIONES              -->
+    <!-- ========================================== -->
+    <section id="sedes" class="tab-panel">
+      
+      <div style="margin-bottom: 2rem;">
+        <div class="badge-row">
+          <span class="badge badge-gold">📍 Cobertura Regional</span>
+          <span class="badge badge-emerald">✨ Manhattan School</span>
+          <span class="badge badge-cyan">📞 Inscripciones Abiertas</span>
+        </div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #ffffff; margin-bottom: 0.5rem;">
+          Sedes & Proceso de Inscripción
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 850px;">
+          Nuestros cursos se imparten de manera presencial en el estado de Guerrero, acercando la mejor educación digital a las familias de la región.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Zirándaro Headquarters -->
+        <div class="glass-card" style="border-top: 4px solid var(--accent-gold);">
+          <div class="card-icon" style="color: #fbbf24;">🏛️</div>
+          <h3 class="card-title">Sede Zirándaro de los Chávez</h3>
+          <p class="card-desc" style="margin-bottom: 1.25rem;">
+            Centro de capacitación donde se llevó a cabo la clase del 18 de octubre de 2026. Espacio equipado para prácticas con computadoras y conexión digital.
+          </p>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light); display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem;">
+            <li>✅ <strong>Municipio:</strong> Zirándaro de los Chávez, Guerrero</li>
+            <li>✅ <strong>Modalidad:</strong> Presencial teórico-práctico</li>
+            <li>✅ <strong>Instructor:</strong> Ing. Andrés Anuar</li>
+            <li>✅ <strong>Enfoque:</strong> Fundamentos, PWA, IA y Programación</li>
+          </ul>
+          <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20inscribirme%20en%20la%20sede%20de%20Zir%C3%A1ndaro" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+            <span>💬</span> Inscribirse en Zirándaro
+          </a>
+        </div>
+
+        <!-- Aratichanguio Headquarters -->
+        <div class="glass-card" style="border-top: 4px solid #10b981;">
+          <div class="card-icon" style="color: #34d399;">🌴</div>
+          <h3 class="card-title">Sede Aratichanguio</h3>
+          <p class="card-desc" style="margin-bottom: 1.25rem;">
+            Nuestra sede hermana donde llevamos los mismos módulos formativos para que ningún joven de la comunidad se quede rezagado tecnológicamente.
+          </p>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light); display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem;">
+            <li>✅ <strong>Localidad:</strong> Aratichanguio, Guerrero</li>
+            <li>✅ <strong>Modalidad:</strong> Presencial con proyectos web</li>
+            <li>✅ <strong>Instructor:</strong> Ing. Andrés Anuar</li>
+            <li>✅ <strong>Enfoque:</strong> Computación aplicada y herramientas de trabajo</li>
+          </ul>
+          <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20inscribirme%20en%20la%20sede%20de%20Aratichanguio" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">
+            <span>💬</span> Inscribirse en Aratichanguio
+          </a>
+        </div>
+      </div>
+
+      <!-- WhatsApp Direct Contact Banner -->
+      <div class="glass-card" style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(10, 25, 47, 0.9) 100%); border: 1px solid rgba(16, 185, 129, 0.35);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: #ffffff; margin-bottom: 0.5rem;">
+          ¿Deseas más información sobre los cursos?
+        </h3>
+        <p style="color: var(--text-light); max-width: 650px; margin: 0 auto 1.75rem auto; font-size: 1.05rem;">
+          Comunícate directamente con el <strong>Ing. Andrés Anuar</strong> a través de WhatsApp para conocer horarios disponibles, costos accesibles y requisitos de inscripción.
+        </p>
+        <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20pedir%20informaci%C3%B3n%20para%20inscribirme%20en%20Manhattan%20School" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size: 1.1rem; padding: 0.9rem 2rem;">
+          <span>💬</span> Enviar WhatsApp a +52 453 116 6223
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Interactive Student Preview Modal -->
+  <div id="student-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center; padding:1.25rem;">
+    <div style="background:#0f2038; border:1px solid var(--border-glass); border-radius:var(--radius-lg); max-width:680px; width:100%; max-height:90vh; overflow-y:auto; padding:1.75rem; box-shadow:var(--shadow-elevated);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; border-bottom:1px solid var(--border-glass); padding-bottom:0.75rem;">
+        <h3 id="modal-title" style="font-family:var(--font-heading); color:#ffffff; font-size:1.25rem;">Detalle de Evaluación</h3>
+        <button id="modal-close-btn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;" title="Cerrar">&times;</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/524531166223?text=Hola%20Ing.%20Andr%C3%A9s%20Anuar,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20clases%20en%20Manhattan%20School" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" title="Contactar por WhatsApp">
+    <div class="whatsapp-bubble">¿Dudas? ¡Escríbenos por WhatsApp!</div>
+    <div class="whatsapp-btn-circle" aria-label="WhatsApp">
+      💬
+    </div>
+  </a>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        <p><strong>Manhattan School</strong> • Centro de Computación & Habilidades Digitales</p>
+        <p style="margin-top: 0.25rem;">Sedes: Zirándaro & Aratichanguio, Guerrero • Clase impartida el 18 de Octubre de 2026</p>
+        <p style="margin-top: 0.25rem;">Profesor: <strong>Ing. Andrés Anuar</strong> • Alumnos: <strong>Adilene, Aylani y Ronaldo</strong></p>
+      </div>
+      <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+        <span class="badge badge-emerald">⚡ PWA Instalable</span>
+        <a href="https://wa.me/524531166223" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold-light); text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+          WhatsApp: +52 453 116 6223
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
