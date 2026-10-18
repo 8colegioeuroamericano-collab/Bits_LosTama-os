@@ -62,105 +62,105 @@ document.addEventListener('DOMContentLoaded', () => {
     if (studentName === 'Adilene') {
       modalTitle.innerText = 'Proyecto de Adilene. B — Fundamentos de Computación & Hardware';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #38bdf8; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+        <div style="background:#ffffff; border:1px solid #dbeafe; border-radius:12px; padding:1.25rem; color:#0f172a; box-shadow:0 4px 16px rgba(15,43,76,0.06);">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
             <div>
-              <h4 style="color:#38bdf8; font-size:1.15rem; font-weight:700;">🌟 Autoría: Adilene. B</h4>
-              <p style="font-size:0.85rem; color:#94a3b8;">Clase de Fundamentos de Computación • 18 de Octubre de 2026</p>
+              <h4 style="color:#163b65; font-size:1.15rem; font-weight:700;">🌟 Autoría: Adilene. B</h4>
+              <p style="font-size:0.85rem; color:#64748b;">Clase de Fundamentos de Computación • 18 de Octubre de 2026</p>
             </div>
             <a href="evaluaciones/evaluacion_adilene.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem;">
               <span>↗️</span> Abrir Web en Pantalla Completa
             </a>
           </div>
 
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #38bdf8;">
-            <p style="font-weight:bold; color:#38bdf8; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Adilene a Gemini:</p>
-            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
+          <div style="background:#f8fafc; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:4px solid #163b65; border:1px solid #e2e8f0; border-left-width:4px;">
+            <p style="font-weight:bold; color:#163b65; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Adilene a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#334155;">
               "La computadora tiene dos partes fundamentales: el Hardware que podemos tocar físicamente y el Software que son los programas. Además aprendí los bits, bytes y las partes del gabinete."
             </p>
           </div>
 
-          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
-            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid #e2e8f0; background:#f8fafc; margin-bottom:1rem;">
+            <div style="background:#f1f5f9; padding:0.5rem 0.75rem; font-size:0.8rem; color:#475569; display:flex; justify-content:space-between; border-bottom:1px solid #e2e8f0;">
               <span>🖥️ Vista Previa Interactiva de su Página</span>
-              <span style="color:#34d399;">● En Vivo</span>
+              <span style="color:#059669; font-weight:700;">● En Vivo</span>
             </div>
-            <iframe src="evaluaciones/evaluacion_adilene.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Adilene. B"></iframe>
+            <iframe src="evaluaciones/evaluacion_adilene.html" style="width:100%; height:450px; border:none; display:block;" title="Página Web de Adilene. B"></iframe>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_adilene.html</span>
-            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
+            <span style="color:#059669; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_adilene.html</span>
+            <span style="color:#64748b;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
     } else if (studentName === 'Aylani') {
       modalTitle.innerText = 'Proyecto de Aylani. B — Hardware, Software y Componentes';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #10b981; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+        <div style="background:#ffffff; border:1px solid #a7f3d0; border-radius:12px; padding:1.25rem; color:#0f172a; box-shadow:0 4px 16px rgba(15,43,76,0.06);">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
             <div>
-              <h4 style="color:#34d399; font-size:1.15rem; font-weight:700;">🌟 Autoría: Aylani. B</h4>
-              <p style="font-size:0.85rem; color:#94a3b8;">Apuntes Interactivos de Computación • 18 de Octubre de 2026</p>
+              <h4 style="color:#059669; font-size:1.15rem; font-weight:700;">🌟 Autoría: Aylani. B</h4>
+              <p style="font-size:0.85rem; color:#64748b;">Apuntes Interactivos de Computación • 18 de Octubre de 2026</p>
             </div>
-            <a href="evaluaciones/evaluacion_aylani.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem; background:linear-gradient(135deg, #10b981, #059669);">
+            <a href="evaluaciones/evaluacion_aylani.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem; background:linear-gradient(135deg, #059669, #047857);">
               <span>↗️</span> Abrir Web en Pantalla Completa
             </a>
           </div>
 
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #10b981;">
-            <p style="font-weight:bold; color:#34d399; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Aylani a Gemini:</p>
-            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
+          <div style="background:#f8fafc; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:4px solid #059669; border:1px solid #e2e8f0; border-left-width:4px;">
+            <p style="font-weight:bold; color:#059669; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Aylani a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#334155;">
               "El hardware es lo tangible, lo que podemos conectar y armar como teclado y procesador. El software son los programas, el sistema operativo y las aplicaciones que dan vida a la máquina."
             </p>
           </div>
 
-          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
-            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid #e2e8f0; background:#f8fafc; margin-bottom:1rem;">
+            <div style="background:#f1f5f9; padding:0.5rem 0.75rem; font-size:0.8rem; color:#475569; display:flex; justify-content:space-between; border-bottom:1px solid #e2e8f0;">
               <span>🖥️ Vista Previa Interactiva de su Página</span>
-              <span style="color:#34d399;">● En Vivo</span>
+              <span style="color:#059669; font-weight:700;">● En Vivo</span>
             </div>
-            <iframe src="evaluaciones/evaluacion_aylani.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Aylani. B"></iframe>
+            <iframe src="evaluaciones/evaluacion_aylani.html" style="width:100%; height:450px; border:none; display:block;" title="Página Web de Aylani. B"></iframe>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_aylani.html</span>
-            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
+            <span style="color:#059669; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_aylani.html</span>
+            <span style="color:#64748b;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
     } else if (studentName === 'Ronaldo') {
       modalTitle.innerText = 'Proyecto de Ronaldo Pineda Andaya — MiClaseTech & Unidades de Medida';
       contentHtml = `
-        <div style="background:#0a192f; border:1px solid #06b6d4; border-radius:12px; padding:1.25rem; color:#e2e8f0;">
+        <div style="background:#ffffff; border:1px solid #fecdd3; border-radius:12px; padding:1.25rem; color:#0f172a; box-shadow:0 4px 16px rgba(15,43,76,0.06);">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
             <div>
-              <h4 style="color:#38bdf8; font-size:1.15rem; font-weight:700;">🌟 Autoría: Ronaldo Pineda Andaya</h4>
-              <p style="font-size:0.85rem; color:#94a3b8;">Evaluación de Clase MiClaseTech • 18 de Octubre de 2026</p>
+              <h4 style="color:#e11d48; font-size:1.15rem; font-weight:700;">🌟 Autoría: Ronaldo Pineda Andaya</h4>
+              <p style="font-size:0.85rem; color:#64748b;">Evaluación de Clase MiClaseTech • 18 de Octubre de 2026</p>
             </div>
-            <a href="evaluaciones/evaluacion_ronaldo.html" target="_blank" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.85rem; background:linear-gradient(135deg, #0ea5e9, #0284c7);">
+            <a href="evaluaciones/evaluacion_ronaldo.html" target="_blank" class="btn btn-red" style="padding:0.45rem 1rem; font-size:0.85rem;">
               <span>↗️</span> Abrir Web en Pantalla Completa
             </a>
           </div>
 
-          <div style="background:#112240; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:3px solid #06b6d4;">
-            <p style="font-weight:bold; color:#38bdf8; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Ronaldo a Gemini:</p>
-            <p style="font-style:italic; font-size:0.9rem; color:#cbd5e1;">
-              "Aprendimos hardware interno y externo, periféricos, software y las unidades de medida: 1 Bit, Byte (8 bits), KB (1,000 bytes), MB (1,000 KB), GB (1,000 MB) y cómo se transportan los datos."
+          <div style="background:#f8fafc; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:4px solid #e11d48; border:1px solid #e2e8f0; border-left-width:4px;">
+            <p style="font-weight:bold; color:#e11d48; font-size:0.85rem; margin-bottom:0.25rem;">Explicación de Ronaldo a Gemini:</p>
+            <p style="font-style:italic; font-size:0.9rem; color:#334155;">
+              "Aprendimos hardware interno y externo, periféricos, software y las unidades de medida: 1 Bit, Byte (8 bits), KB (1,000 bytes), MB (1,000 KB), GB (1,000 MB) y el transporte de datos."
             </p>
           </div>
 
-          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#020617; margin-bottom:1rem;">
-            <div style="background:#0f172a; padding:0.5rem 0.75rem; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid #e2e8f0; background:#f8fafc; margin-bottom:1rem;">
+            <div style="background:#f1f5f9; padding:0.5rem 0.75rem; font-size:0.8rem; color:#475569; display:flex; justify-content:space-between; border-bottom:1px solid #e2e8f0;">
               <span>🖥️ Vista Previa Interactiva de su Página</span>
-              <span style="color:#34d399;">● En Vivo</span>
+              <span style="color:#059669; font-weight:700;">● En Vivo</span>
             </div>
-            <iframe src="evaluaciones/evaluacion_ronaldo.html" style="width:100%; height:420px; border:none; display:block;" title="Página Web de Ronaldo Pineda Andaya"></iframe>
+            <iframe src="evaluaciones/evaluacion_ronaldo.html" style="width:100%; height:450px; border:none; display:block;" title="Página Web de Ronaldo Pineda Andaya"></iframe>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-            <span style="color:#10b981; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_ronaldo.html</span>
-            <span style="color:#94a3b8;">Sede: Zirándaro de los Chávez</span>
+            <span style="color:#059669; font-weight:700;">✅ Archivo: evaluaciones/evaluacion_ronaldo.html</span>
+            <span style="color:#64748b;">Sede: Zirándaro de los Chávez</span>
           </div>
         </div>
       `;
